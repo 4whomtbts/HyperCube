@@ -1,0 +1,17 @@
+syntax="proto3";
+package proto;
+
+enum ResCode {
+    SUCCESS = 0;
+    FAIL = 1;
+    WARNING = 2;
+}
+
+message ResMessage {
+    string msg = 1;
+}
+
+message HyperResponse {
+    ResCode resCode = 1;
+    ResMessage msg = 2;
+}

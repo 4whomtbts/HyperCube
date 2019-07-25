@@ -1,0 +1,20 @@
+{
+  "node": {
+      "server_id": "seoul_region",
+      "server_ip" : "127.0.0.1",
+      "port": 1996
+    },
+
+    "peer": [
+      {
+        "server_id": "us_east_region",
+        "server_ip": "127.0.0.1",
+        "port": 1997
+      },
+      {
+        "server_id" : "east_europe_region",
+        "server_ip": "127.0.0.1",
+        "port": 1998
+      }
+    ]
+}

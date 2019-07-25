@@ -1,0 +1,90 @@
+   /*
+    @Override
+    public StreamObserver<Raft.AppendEntriesRequest> appendEntries(StreamObserver<Raft.AppendEntriesResponse> resObserver) {
+
+        this.server.resetHeartBeatTimer();
+        this.server.cancelElection();
+
+
+
+        return new StreamObserver<Raft.AppendEntriesRequest>() {
+
+            Raft.AppendEntriesResponse res;
+
+            @Override
+            public void onNext(Raft.AppendEntriesRequest appendEntriesRequest) {
+                this.res = Raft.AppendEntriesResponse.newBuilder().setResCode(
+                        HyperCube.ResCode.SUCCESS
+                ).build();
+                System.out.println( " [ " +appendEntriesRequest.getSender().getServerId() +" ] 로부터  [ "+ RaftServiceImpl.this.server.getServerId()+" ] 가 하트비트 받음");
+
+            }
+
+            @Override
+            public void onError(Throwable throwable) {
+
+            }
+
+            @Override
+            public void onCompleted() {
+
+                resObserver.onNext(this.res);
+                resObserver.onCompleted();
+            }
+        };
+    }
+
+/*
+    @Override
+    public StreamObserver<Raft.VoteRequest> requestVotes(StreamObserver<Raft.VoteResponse> observer) {
+
+        //this.server.resetElectionTimeOut();
+
+
+        return new StreamObserver<Raft.VoteRequest>() {
+            Raft.VoteResponse res;
+            final RaftServiceImpl parent = RaftServiceImpl.this;
+
+
+            @Override
+            public void onNext(Raft.VoteRequest voteRequest) {
+                //System.out.println("vote is sent with term " + voteRequest.getTerm());
+
+
+                if (parent.server.getTerm() < voteRequest.getTerm()
+                        || parent.server.getLatestVotedTerm() < voteRequest.getTerm()) {
+
+                    res = Raft.VoteResponse.newBuilder().setVoteGranted(true).setTerm(voteRequest.getTerm()).build();
+                } else {
+                    res = Raft.VoteResponse.newBuilder().setVoteGranted(false).setTerm(voteRequest.getTerm()).build();
+                }
+
+            }
+
+            @Override
+            public void onError(Throwable throwable) {
+
+            }
+
+            @Override
+            public void onCompleted() {
+                //System.out.println("client sent all vote count");
+                observer.onNext(res);
+                observer.onCompleted();
+            }
+        };
+
+
+    }
+
+
+    /*
+        @Override
+        public void sayHello(Raft.HelloRequest req, StreamObserver<Raft.HelloReply> observer){
+            Raft.HelloReply resMsg = Raft.HelloReply.newBuilder().setReply("grpc response").build();
+            observer.onNext(resMsg);
+            observer.onCompleted();
+
+        }
+    */
+*/
