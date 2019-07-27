@@ -103,23 +103,5 @@ public class Peer {
     }
 
 
-    /*
-    public void sendHello(){
-        Raft.HelloRequest req = Raft.HelloRequest.newBuilder().setMsg(Integer.toString(this.port)).build();
-
-        Raft.HelloReply reply;
-
-        try {
-            System.out.println("리플라이 받자");
-
-            reply = blockingStub.sayHello(req);
-
-        }catch (StatusRuntimeException e){
-            e.printStackTrace();
-            return;
-        }
-
-    }
-    */
 
 }
