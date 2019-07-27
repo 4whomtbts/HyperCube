@@ -1,5 +1,6 @@
 package raft;
 
+import com.sun.deploy.nativesandbox.NativeSandboxBroker;
 import io.grpc.*;
 import proto.Raft;
 
@@ -212,6 +213,7 @@ public class RaftNode {
     }
 
 
+
     public void resetHeartBeatTimer() {
 
         if (heartBeatScheduledFuture != null && !heartBeatScheduledFuture.isDone()) {
@@ -256,7 +258,29 @@ public class RaftNode {
 
 
     public void appendEntries(Peer peer) {
+
+
+        if(this.state == NodeState.LEADER){
+            Raft.AppendEntriesRequest.Builder reqBuilder = Raft.AppendEntriesRequest.newBuilder();
+
+
+
+
+
+
+
+
+        }else{
+
+
+
+
+        }
+
         peer.appendEntries(mySender);
+
+
+
     }
 
 

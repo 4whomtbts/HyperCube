@@ -4,38 +4,33 @@ package proto;
 import "proto/hyperCube.proto";
 service RaftService {
 
-    //rpc SayHello(HelloRequest) returns (HelloReply){}
-    //rpc RequestVotes(stream VoteRequest) returns (VoteResponse){}
     rpc RequestVotes(VoteRequest) returns (VoteResponse){}
-    ///rpc AppendEntries(stream AppendEntriesRequest) returns (AppendEntriesResponse){}
     rpc AppendEntries(AppendEntriesRequest) returns (AppendEntriesResponse){}
 }
-
-
+enum EntryType {
+    ENTRY_TYPE_DATA = 0;
+    ENTRY_TYPE_CONFIGURATION = 1;
+}
 message Node {
     string server_id = 1;
     string server_ip = 2;
     uint32 port = 3;
 }
-
 message VoteRequest {
     Node sender = 1;
     uint64 term = 2;
     uint64 last_log_term = 3;
     uint64 last_log_index = 4;
 }
-
 message VoteResponse {
     uint64 term = 1;
     bool VoteGranted = 2;
 }
-
 message LogEntry {
     uint64 term =  1;
     uint64 index = 2;
     bytes data = 3;
 }
-
 message AppendEntriesRequest {
     Node sender = 1;
     uint64 term = 2;
@@ -43,17 +38,23 @@ message AppendEntriesRequest {
     uint64 prev_log_term = 4;
     repeated LogEntry entries = 5;
     uint64 commit_index = 6;
-
 }
 message AppendEntriesResponse {
-    ResCode res_code = 1;
+    string server_id = 1;
     uint64 term = 2;
-    uint64 last_log_index = 3;
-
+    uint64 prev_log_index = 3;
+    uint64 prev_log_term = 4;
+    repeated LogEntry entries = 5;
+    uint64 commit_index = 6;
 }
-
 message HyperCubeConfig {
     Node node = 1;
     repeated Node peer =2;
-
 }
+message LogEntry {
+    uint64 term = 1;
+    uint64 index = 2;
+    EntryType type = 3;
+    bytes data = 4;
+}
+
