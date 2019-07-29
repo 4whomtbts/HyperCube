@@ -14,6 +14,104 @@ public final class Raft {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
+  /**
+   * Protobuf enum {@code proto.EntryType}
+   */
+  public enum EntryType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>ENTRY_TYPE_DATA = 0;</code>
+     */
+    ENTRY_TYPE_DATA(0),
+    /**
+     * <code>ENTRY_TYPE_CONFIGURATION = 1;</code>
+     */
+    ENTRY_TYPE_CONFIGURATION(1),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>ENTRY_TYPE_DATA = 0;</code>
+     */
+    public static final int ENTRY_TYPE_DATA_VALUE = 0;
+    /**
+     * <code>ENTRY_TYPE_CONFIGURATION = 1;</code>
+     */
+    public static final int ENTRY_TYPE_CONFIGURATION_VALUE = 1;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static EntryType valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static EntryType forNumber(int value) {
+      switch (value) {
+        case 0: return ENTRY_TYPE_DATA;
+        case 1: return ENTRY_TYPE_CONFIGURATION;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<EntryType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        EntryType> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<EntryType>() {
+            public EntryType findValueByNumber(int number) {
+              return EntryType.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return proto.Raft.getDescriptor().getEnumTypes().get(0);
+    }
+
+    private static final EntryType[] VALUES = values();
+
+    public static EntryType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private EntryType(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:proto.EntryType)
+  }
+
   public interface NodeOrBuilder extends
       // @@protoc_insertion_point(interface_extends:proto.Node)
       com.google.protobuf.MessageOrBuilder {
@@ -2113,616 +2211,6 @@ public final class Raft {
 
   }
 
-  public interface LogEntryOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:proto.LogEntry)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>uint64 term = 1;</code>
-     */
-    long getTerm();
-
-    /**
-     * <code>uint64 index = 2;</code>
-     */
-    long getIndex();
-
-    /**
-     * <code>bytes data = 3;</code>
-     */
-    com.google.protobuf.ByteString getData();
-  }
-  /**
-   * Protobuf type {@code proto.LogEntry}
-   */
-  public  static final class LogEntry extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:proto.LogEntry)
-      LogEntryOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use LogEntry.newBuilder() to construct.
-    private LogEntry(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private LogEntry() {
-      data_ = com.google.protobuf.ByteString.EMPTY;
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new LogEntry();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private LogEntry(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-
-              term_ = input.readUInt64();
-              break;
-            }
-            case 16: {
-
-              index_ = input.readUInt64();
-              break;
-            }
-            case 26: {
-
-              data_ = input.readBytes();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return proto.Raft.internal_static_proto_LogEntry_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return proto.Raft.internal_static_proto_LogEntry_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              proto.Raft.LogEntry.class, proto.Raft.LogEntry.Builder.class);
-    }
-
-    public static final int TERM_FIELD_NUMBER = 1;
-    private long term_;
-    /**
-     * <code>uint64 term = 1;</code>
-     */
-    public long getTerm() {
-      return term_;
-    }
-
-    public static final int INDEX_FIELD_NUMBER = 2;
-    private long index_;
-    /**
-     * <code>uint64 index = 2;</code>
-     */
-    public long getIndex() {
-      return index_;
-    }
-
-    public static final int DATA_FIELD_NUMBER = 3;
-    private com.google.protobuf.ByteString data_;
-    /**
-     * <code>bytes data = 3;</code>
-     */
-    public com.google.protobuf.ByteString getData() {
-      return data_;
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (term_ != 0L) {
-        output.writeUInt64(1, term_);
-      }
-      if (index_ != 0L) {
-        output.writeUInt64(2, index_);
-      }
-      if (!data_.isEmpty()) {
-        output.writeBytes(3, data_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (term_ != 0L) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(1, term_);
-      }
-      if (index_ != 0L) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(2, index_);
-      }
-      if (!data_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, data_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof proto.Raft.LogEntry)) {
-        return super.equals(obj);
-      }
-      proto.Raft.LogEntry other = (proto.Raft.LogEntry) obj;
-
-      if (getTerm()
-          != other.getTerm()) return false;
-      if (getIndex()
-          != other.getIndex()) return false;
-      if (!getData()
-          .equals(other.getData())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + TERM_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getTerm());
-      hash = (37 * hash) + INDEX_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getIndex());
-      hash = (37 * hash) + DATA_FIELD_NUMBER;
-      hash = (53 * hash) + getData().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static proto.Raft.LogEntry parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static proto.Raft.LogEntry parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static proto.Raft.LogEntry parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static proto.Raft.LogEntry parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static proto.Raft.LogEntry parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static proto.Raft.LogEntry parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static proto.Raft.LogEntry parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static proto.Raft.LogEntry parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static proto.Raft.LogEntry parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static proto.Raft.LogEntry parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static proto.Raft.LogEntry parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static proto.Raft.LogEntry parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(proto.Raft.LogEntry prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code proto.LogEntry}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:proto.LogEntry)
-        proto.Raft.LogEntryOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return proto.Raft.internal_static_proto_LogEntry_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return proto.Raft.internal_static_proto_LogEntry_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                proto.Raft.LogEntry.class, proto.Raft.LogEntry.Builder.class);
-      }
-
-      // Construct using proto.Raft.LogEntry.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        term_ = 0L;
-
-        index_ = 0L;
-
-        data_ = com.google.protobuf.ByteString.EMPTY;
-
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return proto.Raft.internal_static_proto_LogEntry_descriptor;
-      }
-
-      @java.lang.Override
-      public proto.Raft.LogEntry getDefaultInstanceForType() {
-        return proto.Raft.LogEntry.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public proto.Raft.LogEntry build() {
-        proto.Raft.LogEntry result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public proto.Raft.LogEntry buildPartial() {
-        proto.Raft.LogEntry result = new proto.Raft.LogEntry(this);
-        result.term_ = term_;
-        result.index_ = index_;
-        result.data_ = data_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof proto.Raft.LogEntry) {
-          return mergeFrom((proto.Raft.LogEntry)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(proto.Raft.LogEntry other) {
-        if (other == proto.Raft.LogEntry.getDefaultInstance()) return this;
-        if (other.getTerm() != 0L) {
-          setTerm(other.getTerm());
-        }
-        if (other.getIndex() != 0L) {
-          setIndex(other.getIndex());
-        }
-        if (other.getData() != com.google.protobuf.ByteString.EMPTY) {
-          setData(other.getData());
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        proto.Raft.LogEntry parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (proto.Raft.LogEntry) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private long term_ ;
-      /**
-       * <code>uint64 term = 1;</code>
-       */
-      public long getTerm() {
-        return term_;
-      }
-      /**
-       * <code>uint64 term = 1;</code>
-       */
-      public Builder setTerm(long value) {
-        
-        term_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>uint64 term = 1;</code>
-       */
-      public Builder clearTerm() {
-        
-        term_ = 0L;
-        onChanged();
-        return this;
-      }
-
-      private long index_ ;
-      /**
-       * <code>uint64 index = 2;</code>
-       */
-      public long getIndex() {
-        return index_;
-      }
-      /**
-       * <code>uint64 index = 2;</code>
-       */
-      public Builder setIndex(long value) {
-        
-        index_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>uint64 index = 2;</code>
-       */
-      public Builder clearIndex() {
-        
-        index_ = 0L;
-        onChanged();
-        return this;
-      }
-
-      private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
-      /**
-       * <code>bytes data = 3;</code>
-       */
-      public com.google.protobuf.ByteString getData() {
-        return data_;
-      }
-      /**
-       * <code>bytes data = 3;</code>
-       */
-      public Builder setData(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        data_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>bytes data = 3;</code>
-       */
-      public Builder clearData() {
-        
-        data_ = getDefaultInstance().getData();
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:proto.LogEntry)
-    }
-
-    // @@protoc_insertion_point(class_scope:proto.LogEntry)
-    private static final proto.Raft.LogEntry DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new proto.Raft.LogEntry();
-    }
-
-    public static proto.Raft.LogEntry getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<LogEntry>
-        PARSER = new com.google.protobuf.AbstractParser<LogEntry>() {
-      @java.lang.Override
-      public LogEntry parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new LogEntry(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<LogEntry> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<LogEntry> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public proto.Raft.LogEntry getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
   public interface AppendEntriesRequestOrBuilder extends
       // @@protoc_insertion_point(interface_extends:proto.AppendEntriesRequest)
       com.google.protobuf.MessageOrBuilder {
@@ -3962,13 +3450,14 @@ public final class Raft {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.proto.ResCode res_code = 1;</code>
+     * <code>string server_id = 1;</code>
      */
-    int getResCodeValue();
+    java.lang.String getServerId();
     /**
-     * <code>.proto.ResCode res_code = 1;</code>
+     * <code>string server_id = 1;</code>
      */
-    proto.HyperCube.ResCode getResCode();
+    com.google.protobuf.ByteString
+        getServerIdBytes();
 
     /**
      * <code>uint64 term = 2;</code>
@@ -3976,9 +3465,43 @@ public final class Raft {
     long getTerm();
 
     /**
-     * <code>uint64 last_log_index = 3;</code>
+     * <code>uint64 prev_log_index = 3;</code>
      */
-    long getLastLogIndex();
+    long getPrevLogIndex();
+
+    /**
+     * <code>uint64 prev_log_term = 4;</code>
+     */
+    long getPrevLogTerm();
+
+    /**
+     * <code>repeated .proto.LogEntry entries = 5;</code>
+     */
+    java.util.List<proto.Raft.LogEntry> 
+        getEntriesList();
+    /**
+     * <code>repeated .proto.LogEntry entries = 5;</code>
+     */
+    proto.Raft.LogEntry getEntries(int index);
+    /**
+     * <code>repeated .proto.LogEntry entries = 5;</code>
+     */
+    int getEntriesCount();
+    /**
+     * <code>repeated .proto.LogEntry entries = 5;</code>
+     */
+    java.util.List<? extends proto.Raft.LogEntryOrBuilder> 
+        getEntriesOrBuilderList();
+    /**
+     * <code>repeated .proto.LogEntry entries = 5;</code>
+     */
+    proto.Raft.LogEntryOrBuilder getEntriesOrBuilder(
+        int index);
+
+    /**
+     * <code>uint64 commit_index = 6;</code>
+     */
+    long getCommitIndex();
   }
   /**
    * Protobuf type {@code proto.AppendEntriesResponse}
@@ -3993,7 +3516,8 @@ public final class Raft {
       super(builder);
     }
     private AppendEntriesResponse() {
-      resCode_ = 0;
+      serverId_ = "";
+      entries_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -4016,6 +3540,7 @@ public final class Raft {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
+      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -4026,10 +3551,10 @@ public final class Raft {
             case 0:
               done = true;
               break;
-            case 8: {
-              int rawValue = input.readEnum();
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
 
-              resCode_ = rawValue;
+              serverId_ = s;
               break;
             }
             case 16: {
@@ -4039,7 +3564,26 @@ public final class Raft {
             }
             case 24: {
 
-              lastLogIndex_ = input.readUInt64();
+              prevLogIndex_ = input.readUInt64();
+              break;
+            }
+            case 32: {
+
+              prevLogTerm_ = input.readUInt64();
+              break;
+            }
+            case 42: {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                entries_ = new java.util.ArrayList<proto.Raft.LogEntry>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              entries_.add(
+                  input.readMessage(proto.Raft.LogEntry.parser(), extensionRegistry));
+              break;
+            }
+            case 48: {
+
+              commitIndex_ = input.readUInt64();
               break;
             }
             default: {
@@ -4057,6 +3601,9 @@ public final class Raft {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          entries_ = java.util.Collections.unmodifiableList(entries_);
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -4074,21 +3621,38 @@ public final class Raft {
               proto.Raft.AppendEntriesResponse.class, proto.Raft.AppendEntriesResponse.Builder.class);
     }
 
-    public static final int RES_CODE_FIELD_NUMBER = 1;
-    private int resCode_;
+    public static final int SERVER_ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object serverId_;
     /**
-     * <code>.proto.ResCode res_code = 1;</code>
+     * <code>string server_id = 1;</code>
      */
-    public int getResCodeValue() {
-      return resCode_;
+    public java.lang.String getServerId() {
+      java.lang.Object ref = serverId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        serverId_ = s;
+        return s;
+      }
     }
     /**
-     * <code>.proto.ResCode res_code = 1;</code>
+     * <code>string server_id = 1;</code>
      */
-    public proto.HyperCube.ResCode getResCode() {
-      @SuppressWarnings("deprecation")
-      proto.HyperCube.ResCode result = proto.HyperCube.ResCode.valueOf(resCode_);
-      return result == null ? proto.HyperCube.ResCode.UNRECOGNIZED : result;
+    public com.google.protobuf.ByteString
+        getServerIdBytes() {
+      java.lang.Object ref = serverId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        serverId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     public static final int TERM_FIELD_NUMBER = 2;
@@ -4100,13 +3664,66 @@ public final class Raft {
       return term_;
     }
 
-    public static final int LAST_LOG_INDEX_FIELD_NUMBER = 3;
-    private long lastLogIndex_;
+    public static final int PREV_LOG_INDEX_FIELD_NUMBER = 3;
+    private long prevLogIndex_;
     /**
-     * <code>uint64 last_log_index = 3;</code>
+     * <code>uint64 prev_log_index = 3;</code>
      */
-    public long getLastLogIndex() {
-      return lastLogIndex_;
+    public long getPrevLogIndex() {
+      return prevLogIndex_;
+    }
+
+    public static final int PREV_LOG_TERM_FIELD_NUMBER = 4;
+    private long prevLogTerm_;
+    /**
+     * <code>uint64 prev_log_term = 4;</code>
+     */
+    public long getPrevLogTerm() {
+      return prevLogTerm_;
+    }
+
+    public static final int ENTRIES_FIELD_NUMBER = 5;
+    private java.util.List<proto.Raft.LogEntry> entries_;
+    /**
+     * <code>repeated .proto.LogEntry entries = 5;</code>
+     */
+    public java.util.List<proto.Raft.LogEntry> getEntriesList() {
+      return entries_;
+    }
+    /**
+     * <code>repeated .proto.LogEntry entries = 5;</code>
+     */
+    public java.util.List<? extends proto.Raft.LogEntryOrBuilder> 
+        getEntriesOrBuilderList() {
+      return entries_;
+    }
+    /**
+     * <code>repeated .proto.LogEntry entries = 5;</code>
+     */
+    public int getEntriesCount() {
+      return entries_.size();
+    }
+    /**
+     * <code>repeated .proto.LogEntry entries = 5;</code>
+     */
+    public proto.Raft.LogEntry getEntries(int index) {
+      return entries_.get(index);
+    }
+    /**
+     * <code>repeated .proto.LogEntry entries = 5;</code>
+     */
+    public proto.Raft.LogEntryOrBuilder getEntriesOrBuilder(
+        int index) {
+      return entries_.get(index);
+    }
+
+    public static final int COMMIT_INDEX_FIELD_NUMBER = 6;
+    private long commitIndex_;
+    /**
+     * <code>uint64 commit_index = 6;</code>
+     */
+    public long getCommitIndex() {
+      return commitIndex_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -4123,14 +3740,23 @@ public final class Raft {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (resCode_ != proto.HyperCube.ResCode.SUCCESS.getNumber()) {
-        output.writeEnum(1, resCode_);
+      if (!getServerIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, serverId_);
       }
       if (term_ != 0L) {
         output.writeUInt64(2, term_);
       }
-      if (lastLogIndex_ != 0L) {
-        output.writeUInt64(3, lastLogIndex_);
+      if (prevLogIndex_ != 0L) {
+        output.writeUInt64(3, prevLogIndex_);
+      }
+      if (prevLogTerm_ != 0L) {
+        output.writeUInt64(4, prevLogTerm_);
+      }
+      for (int i = 0; i < entries_.size(); i++) {
+        output.writeMessage(5, entries_.get(i));
+      }
+      if (commitIndex_ != 0L) {
+        output.writeUInt64(6, commitIndex_);
       }
       unknownFields.writeTo(output);
     }
@@ -4141,17 +3767,28 @@ public final class Raft {
       if (size != -1) return size;
 
       size = 0;
-      if (resCode_ != proto.HyperCube.ResCode.SUCCESS.getNumber()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(1, resCode_);
+      if (!getServerIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, serverId_);
       }
       if (term_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt64Size(2, term_);
       }
-      if (lastLogIndex_ != 0L) {
+      if (prevLogIndex_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(3, lastLogIndex_);
+          .computeUInt64Size(3, prevLogIndex_);
+      }
+      if (prevLogTerm_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(4, prevLogTerm_);
+      }
+      for (int i = 0; i < entries_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, entries_.get(i));
+      }
+      if (commitIndex_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(6, commitIndex_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4168,11 +3805,18 @@ public final class Raft {
       }
       proto.Raft.AppendEntriesResponse other = (proto.Raft.AppendEntriesResponse) obj;
 
-      if (resCode_ != other.resCode_) return false;
+      if (!getServerId()
+          .equals(other.getServerId())) return false;
       if (getTerm()
           != other.getTerm()) return false;
-      if (getLastLogIndex()
-          != other.getLastLogIndex()) return false;
+      if (getPrevLogIndex()
+          != other.getPrevLogIndex()) return false;
+      if (getPrevLogTerm()
+          != other.getPrevLogTerm()) return false;
+      if (!getEntriesList()
+          .equals(other.getEntriesList())) return false;
+      if (getCommitIndex()
+          != other.getCommitIndex()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -4184,14 +3828,24 @@ public final class Raft {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + RES_CODE_FIELD_NUMBER;
-      hash = (53 * hash) + resCode_;
+      hash = (37 * hash) + SERVER_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getServerId().hashCode();
       hash = (37 * hash) + TERM_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getTerm());
-      hash = (37 * hash) + LAST_LOG_INDEX_FIELD_NUMBER;
+      hash = (37 * hash) + PREV_LOG_INDEX_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getLastLogIndex());
+          getPrevLogIndex());
+      hash = (37 * hash) + PREV_LOG_TERM_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getPrevLogTerm());
+      if (getEntriesCount() > 0) {
+        hash = (37 * hash) + ENTRIES_FIELD_NUMBER;
+        hash = (53 * hash) + getEntriesList().hashCode();
+      }
+      hash = (37 * hash) + COMMIT_INDEX_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getCommitIndex());
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -4320,16 +3974,27 @@ public final class Raft {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
+          getEntriesFieldBuilder();
         }
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        resCode_ = 0;
+        serverId_ = "";
 
         term_ = 0L;
 
-        lastLogIndex_ = 0L;
+        prevLogIndex_ = 0L;
+
+        prevLogTerm_ = 0L;
+
+        if (entriesBuilder_ == null) {
+          entries_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          entriesBuilder_.clear();
+        }
+        commitIndex_ = 0L;
 
         return this;
       }
@@ -4357,9 +4022,21 @@ public final class Raft {
       @java.lang.Override
       public proto.Raft.AppendEntriesResponse buildPartial() {
         proto.Raft.AppendEntriesResponse result = new proto.Raft.AppendEntriesResponse(this);
-        result.resCode_ = resCode_;
+        int from_bitField0_ = bitField0_;
+        result.serverId_ = serverId_;
         result.term_ = term_;
-        result.lastLogIndex_ = lastLogIndex_;
+        result.prevLogIndex_ = prevLogIndex_;
+        result.prevLogTerm_ = prevLogTerm_;
+        if (entriesBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            entries_ = java.util.Collections.unmodifiableList(entries_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.entries_ = entries_;
+        } else {
+          result.entries_ = entriesBuilder_.build();
+        }
+        result.commitIndex_ = commitIndex_;
         onBuilt();
         return result;
       }
@@ -4408,14 +4085,47 @@ public final class Raft {
 
       public Builder mergeFrom(proto.Raft.AppendEntriesResponse other) {
         if (other == proto.Raft.AppendEntriesResponse.getDefaultInstance()) return this;
-        if (other.resCode_ != 0) {
-          setResCodeValue(other.getResCodeValue());
+        if (!other.getServerId().isEmpty()) {
+          serverId_ = other.serverId_;
+          onChanged();
         }
         if (other.getTerm() != 0L) {
           setTerm(other.getTerm());
         }
-        if (other.getLastLogIndex() != 0L) {
-          setLastLogIndex(other.getLastLogIndex());
+        if (other.getPrevLogIndex() != 0L) {
+          setPrevLogIndex(other.getPrevLogIndex());
+        }
+        if (other.getPrevLogTerm() != 0L) {
+          setPrevLogTerm(other.getPrevLogTerm());
+        }
+        if (entriesBuilder_ == null) {
+          if (!other.entries_.isEmpty()) {
+            if (entries_.isEmpty()) {
+              entries_ = other.entries_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureEntriesIsMutable();
+              entries_.addAll(other.entries_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.entries_.isEmpty()) {
+            if (entriesBuilder_.isEmpty()) {
+              entriesBuilder_.dispose();
+              entriesBuilder_ = null;
+              entries_ = other.entries_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              entriesBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getEntriesFieldBuilder() : null;
+            } else {
+              entriesBuilder_.addAllMessages(other.entries_);
+            }
+          }
+        }
+        if (other.getCommitIndex() != 0L) {
+          setCommitIndex(other.getCommitIndex());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -4445,48 +4155,73 @@ public final class Raft {
         }
         return this;
       }
+      private int bitField0_;
 
-      private int resCode_ = 0;
+      private java.lang.Object serverId_ = "";
       /**
-       * <code>.proto.ResCode res_code = 1;</code>
+       * <code>string server_id = 1;</code>
        */
-      public int getResCodeValue() {
-        return resCode_;
-      }
-      /**
-       * <code>.proto.ResCode res_code = 1;</code>
-       */
-      public Builder setResCodeValue(int value) {
-        resCode_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.proto.ResCode res_code = 1;</code>
-       */
-      public proto.HyperCube.ResCode getResCode() {
-        @SuppressWarnings("deprecation")
-        proto.HyperCube.ResCode result = proto.HyperCube.ResCode.valueOf(resCode_);
-        return result == null ? proto.HyperCube.ResCode.UNRECOGNIZED : result;
-      }
-      /**
-       * <code>.proto.ResCode res_code = 1;</code>
-       */
-      public Builder setResCode(proto.HyperCube.ResCode value) {
-        if (value == null) {
-          throw new NullPointerException();
+      public java.lang.String getServerId() {
+        java.lang.Object ref = serverId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          serverId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
         }
-        
-        resCode_ = value.getNumber();
+      }
+      /**
+       * <code>string server_id = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getServerIdBytes() {
+        java.lang.Object ref = serverId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          serverId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string server_id = 1;</code>
+       */
+      public Builder setServerId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        serverId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>.proto.ResCode res_code = 1;</code>
+       * <code>string server_id = 1;</code>
        */
-      public Builder clearResCode() {
+      public Builder clearServerId() {
         
-        resCode_ = 0;
+        serverId_ = getDefaultInstance().getServerId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string server_id = 1;</code>
+       */
+      public Builder setServerIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        serverId_ = value;
         onChanged();
         return this;
       }
@@ -4517,28 +4252,320 @@ public final class Raft {
         return this;
       }
 
-      private long lastLogIndex_ ;
+      private long prevLogIndex_ ;
       /**
-       * <code>uint64 last_log_index = 3;</code>
+       * <code>uint64 prev_log_index = 3;</code>
        */
-      public long getLastLogIndex() {
-        return lastLogIndex_;
+      public long getPrevLogIndex() {
+        return prevLogIndex_;
       }
       /**
-       * <code>uint64 last_log_index = 3;</code>
+       * <code>uint64 prev_log_index = 3;</code>
        */
-      public Builder setLastLogIndex(long value) {
+      public Builder setPrevLogIndex(long value) {
         
-        lastLogIndex_ = value;
+        prevLogIndex_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>uint64 last_log_index = 3;</code>
+       * <code>uint64 prev_log_index = 3;</code>
        */
-      public Builder clearLastLogIndex() {
+      public Builder clearPrevLogIndex() {
         
-        lastLogIndex_ = 0L;
+        prevLogIndex_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long prevLogTerm_ ;
+      /**
+       * <code>uint64 prev_log_term = 4;</code>
+       */
+      public long getPrevLogTerm() {
+        return prevLogTerm_;
+      }
+      /**
+       * <code>uint64 prev_log_term = 4;</code>
+       */
+      public Builder setPrevLogTerm(long value) {
+        
+        prevLogTerm_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint64 prev_log_term = 4;</code>
+       */
+      public Builder clearPrevLogTerm() {
+        
+        prevLogTerm_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<proto.Raft.LogEntry> entries_ =
+        java.util.Collections.emptyList();
+      private void ensureEntriesIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          entries_ = new java.util.ArrayList<proto.Raft.LogEntry>(entries_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          proto.Raft.LogEntry, proto.Raft.LogEntry.Builder, proto.Raft.LogEntryOrBuilder> entriesBuilder_;
+
+      /**
+       * <code>repeated .proto.LogEntry entries = 5;</code>
+       */
+      public java.util.List<proto.Raft.LogEntry> getEntriesList() {
+        if (entriesBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(entries_);
+        } else {
+          return entriesBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .proto.LogEntry entries = 5;</code>
+       */
+      public int getEntriesCount() {
+        if (entriesBuilder_ == null) {
+          return entries_.size();
+        } else {
+          return entriesBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .proto.LogEntry entries = 5;</code>
+       */
+      public proto.Raft.LogEntry getEntries(int index) {
+        if (entriesBuilder_ == null) {
+          return entries_.get(index);
+        } else {
+          return entriesBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .proto.LogEntry entries = 5;</code>
+       */
+      public Builder setEntries(
+          int index, proto.Raft.LogEntry value) {
+        if (entriesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureEntriesIsMutable();
+          entries_.set(index, value);
+          onChanged();
+        } else {
+          entriesBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .proto.LogEntry entries = 5;</code>
+       */
+      public Builder setEntries(
+          int index, proto.Raft.LogEntry.Builder builderForValue) {
+        if (entriesBuilder_ == null) {
+          ensureEntriesIsMutable();
+          entries_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          entriesBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .proto.LogEntry entries = 5;</code>
+       */
+      public Builder addEntries(proto.Raft.LogEntry value) {
+        if (entriesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureEntriesIsMutable();
+          entries_.add(value);
+          onChanged();
+        } else {
+          entriesBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .proto.LogEntry entries = 5;</code>
+       */
+      public Builder addEntries(
+          int index, proto.Raft.LogEntry value) {
+        if (entriesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureEntriesIsMutable();
+          entries_.add(index, value);
+          onChanged();
+        } else {
+          entriesBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .proto.LogEntry entries = 5;</code>
+       */
+      public Builder addEntries(
+          proto.Raft.LogEntry.Builder builderForValue) {
+        if (entriesBuilder_ == null) {
+          ensureEntriesIsMutable();
+          entries_.add(builderForValue.build());
+          onChanged();
+        } else {
+          entriesBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .proto.LogEntry entries = 5;</code>
+       */
+      public Builder addEntries(
+          int index, proto.Raft.LogEntry.Builder builderForValue) {
+        if (entriesBuilder_ == null) {
+          ensureEntriesIsMutable();
+          entries_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          entriesBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .proto.LogEntry entries = 5;</code>
+       */
+      public Builder addAllEntries(
+          java.lang.Iterable<? extends proto.Raft.LogEntry> values) {
+        if (entriesBuilder_ == null) {
+          ensureEntriesIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, entries_);
+          onChanged();
+        } else {
+          entriesBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .proto.LogEntry entries = 5;</code>
+       */
+      public Builder clearEntries() {
+        if (entriesBuilder_ == null) {
+          entries_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          entriesBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .proto.LogEntry entries = 5;</code>
+       */
+      public Builder removeEntries(int index) {
+        if (entriesBuilder_ == null) {
+          ensureEntriesIsMutable();
+          entries_.remove(index);
+          onChanged();
+        } else {
+          entriesBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .proto.LogEntry entries = 5;</code>
+       */
+      public proto.Raft.LogEntry.Builder getEntriesBuilder(
+          int index) {
+        return getEntriesFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .proto.LogEntry entries = 5;</code>
+       */
+      public proto.Raft.LogEntryOrBuilder getEntriesOrBuilder(
+          int index) {
+        if (entriesBuilder_ == null) {
+          return entries_.get(index);  } else {
+          return entriesBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .proto.LogEntry entries = 5;</code>
+       */
+      public java.util.List<? extends proto.Raft.LogEntryOrBuilder> 
+           getEntriesOrBuilderList() {
+        if (entriesBuilder_ != null) {
+          return entriesBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(entries_);
+        }
+      }
+      /**
+       * <code>repeated .proto.LogEntry entries = 5;</code>
+       */
+      public proto.Raft.LogEntry.Builder addEntriesBuilder() {
+        return getEntriesFieldBuilder().addBuilder(
+            proto.Raft.LogEntry.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .proto.LogEntry entries = 5;</code>
+       */
+      public proto.Raft.LogEntry.Builder addEntriesBuilder(
+          int index) {
+        return getEntriesFieldBuilder().addBuilder(
+            index, proto.Raft.LogEntry.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .proto.LogEntry entries = 5;</code>
+       */
+      public java.util.List<proto.Raft.LogEntry.Builder> 
+           getEntriesBuilderList() {
+        return getEntriesFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          proto.Raft.LogEntry, proto.Raft.LogEntry.Builder, proto.Raft.LogEntryOrBuilder> 
+          getEntriesFieldBuilder() {
+        if (entriesBuilder_ == null) {
+          entriesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              proto.Raft.LogEntry, proto.Raft.LogEntry.Builder, proto.Raft.LogEntryOrBuilder>(
+                  entries_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          entries_ = null;
+        }
+        return entriesBuilder_;
+      }
+
+      private long commitIndex_ ;
+      /**
+       * <code>uint64 commit_index = 6;</code>
+       */
+      public long getCommitIndex() {
+        return commitIndex_;
+      }
+      /**
+       * <code>uint64 commit_index = 6;</code>
+       */
+      public Builder setCommitIndex(long value) {
+        
+        commitIndex_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint64 commit_index = 6;</code>
+       */
+      public Builder clearCommitIndex() {
+        
+        commitIndex_ = 0L;
         onChanged();
         return this;
       }
@@ -4595,68 +4622,56 @@ public final class Raft {
 
   }
 
-  public interface HyperCubeConfigOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:proto.HyperCubeConfig)
+  public interface LogEntryOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:proto.LogEntry)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.proto.Node node = 1;</code>
+     * <code>uint64 term = 1;</code>
      */
-    boolean hasNode();
-    /**
-     * <code>.proto.Node node = 1;</code>
-     */
-    proto.Raft.Node getNode();
-    /**
-     * <code>.proto.Node node = 1;</code>
-     */
-    proto.Raft.NodeOrBuilder getNodeOrBuilder();
+    long getTerm();
 
     /**
-     * <code>repeated .proto.Node peer = 2;</code>
+     * <code>uint64 index = 2;</code>
      */
-    java.util.List<proto.Raft.Node> 
-        getPeerList();
+    long getIndex();
+
     /**
-     * <code>repeated .proto.Node peer = 2;</code>
+     * <code>.proto.EntryType type = 3;</code>
      */
-    proto.Raft.Node getPeer(int index);
+    int getTypeValue();
     /**
-     * <code>repeated .proto.Node peer = 2;</code>
+     * <code>.proto.EntryType type = 3;</code>
      */
-    int getPeerCount();
+    proto.Raft.EntryType getType();
+
     /**
-     * <code>repeated .proto.Node peer = 2;</code>
+     * <code>bytes data = 4;</code>
      */
-    java.util.List<? extends proto.Raft.NodeOrBuilder> 
-        getPeerOrBuilderList();
-    /**
-     * <code>repeated .proto.Node peer = 2;</code>
-     */
-    proto.Raft.NodeOrBuilder getPeerOrBuilder(
-        int index);
+    com.google.protobuf.ByteString getData();
   }
   /**
-   * Protobuf type {@code proto.HyperCubeConfig}
+   * Protobuf type {@code proto.LogEntry}
    */
-  public  static final class HyperCubeConfig extends
+  public  static final class LogEntry extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:proto.HyperCubeConfig)
-      HyperCubeConfigOrBuilder {
+      // @@protoc_insertion_point(message_implements:proto.LogEntry)
+      LogEntryOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use HyperCubeConfig.newBuilder() to construct.
-    private HyperCubeConfig(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use LogEntry.newBuilder() to construct.
+    private LogEntry(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private HyperCubeConfig() {
-      peer_ = java.util.Collections.emptyList();
+    private LogEntry() {
+      type_ = 0;
+      data_ = com.google.protobuf.ByteString.EMPTY;
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new HyperCubeConfig();
+      return new LogEntry();
     }
 
     @java.lang.Override
@@ -4664,7 +4679,7 @@ public final class Raft {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private HyperCubeConfig(
+    private LogEntry(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -4672,7 +4687,6 @@ public final class Raft {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -4683,26 +4697,25 @@ public final class Raft {
             case 0:
               done = true;
               break;
-            case 10: {
-              proto.Raft.Node.Builder subBuilder = null;
-              if (node_ != null) {
-                subBuilder = node_.toBuilder();
-              }
-              node_ = input.readMessage(proto.Raft.Node.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(node_);
-                node_ = subBuilder.buildPartial();
-              }
+            case 8: {
 
+              term_ = input.readUInt64();
               break;
             }
-            case 18: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                peer_ = new java.util.ArrayList<proto.Raft.Node>();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              peer_.add(
-                  input.readMessage(proto.Raft.Node.parser(), extensionRegistry));
+            case 16: {
+
+              index_ = input.readUInt64();
+              break;
+            }
+            case 24: {
+              int rawValue = input.readEnum();
+
+              type_ = rawValue;
+              break;
+            }
+            case 34: {
+
+              data_ = input.readBytes();
               break;
             }
             default: {
@@ -4720,80 +4733,65 @@ public final class Raft {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000001) != 0)) {
-          peer_ = java.util.Collections.unmodifiableList(peer_);
-        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return proto.Raft.internal_static_proto_HyperCubeConfig_descriptor;
+      return proto.Raft.internal_static_proto_LogEntry_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return proto.Raft.internal_static_proto_HyperCubeConfig_fieldAccessorTable
+      return proto.Raft.internal_static_proto_LogEntry_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              proto.Raft.HyperCubeConfig.class, proto.Raft.HyperCubeConfig.Builder.class);
+              proto.Raft.LogEntry.class, proto.Raft.LogEntry.Builder.class);
     }
 
-    public static final int NODE_FIELD_NUMBER = 1;
-    private proto.Raft.Node node_;
+    public static final int TERM_FIELD_NUMBER = 1;
+    private long term_;
     /**
-     * <code>.proto.Node node = 1;</code>
+     * <code>uint64 term = 1;</code>
      */
-    public boolean hasNode() {
-      return node_ != null;
-    }
-    /**
-     * <code>.proto.Node node = 1;</code>
-     */
-    public proto.Raft.Node getNode() {
-      return node_ == null ? proto.Raft.Node.getDefaultInstance() : node_;
-    }
-    /**
-     * <code>.proto.Node node = 1;</code>
-     */
-    public proto.Raft.NodeOrBuilder getNodeOrBuilder() {
-      return getNode();
+    public long getTerm() {
+      return term_;
     }
 
-    public static final int PEER_FIELD_NUMBER = 2;
-    private java.util.List<proto.Raft.Node> peer_;
+    public static final int INDEX_FIELD_NUMBER = 2;
+    private long index_;
     /**
-     * <code>repeated .proto.Node peer = 2;</code>
+     * <code>uint64 index = 2;</code>
      */
-    public java.util.List<proto.Raft.Node> getPeerList() {
-      return peer_;
+    public long getIndex() {
+      return index_;
+    }
+
+    public static final int TYPE_FIELD_NUMBER = 3;
+    private int type_;
+    /**
+     * <code>.proto.EntryType type = 3;</code>
+     */
+    public int getTypeValue() {
+      return type_;
     }
     /**
-     * <code>repeated .proto.Node peer = 2;</code>
+     * <code>.proto.EntryType type = 3;</code>
      */
-    public java.util.List<? extends proto.Raft.NodeOrBuilder> 
-        getPeerOrBuilderList() {
-      return peer_;
+    public proto.Raft.EntryType getType() {
+      @SuppressWarnings("deprecation")
+      proto.Raft.EntryType result = proto.Raft.EntryType.valueOf(type_);
+      return result == null ? proto.Raft.EntryType.UNRECOGNIZED : result;
     }
+
+    public static final int DATA_FIELD_NUMBER = 4;
+    private com.google.protobuf.ByteString data_;
     /**
-     * <code>repeated .proto.Node peer = 2;</code>
+     * <code>bytes data = 4;</code>
      */
-    public int getPeerCount() {
-      return peer_.size();
-    }
-    /**
-     * <code>repeated .proto.Node peer = 2;</code>
-     */
-    public proto.Raft.Node getPeer(int index) {
-      return peer_.get(index);
-    }
-    /**
-     * <code>repeated .proto.Node peer = 2;</code>
-     */
-    public proto.Raft.NodeOrBuilder getPeerOrBuilder(
-        int index) {
-      return peer_.get(index);
+    public com.google.protobuf.ByteString getData() {
+      return data_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -4810,11 +4808,17 @@ public final class Raft {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (node_ != null) {
-        output.writeMessage(1, getNode());
+      if (term_ != 0L) {
+        output.writeUInt64(1, term_);
       }
-      for (int i = 0; i < peer_.size(); i++) {
-        output.writeMessage(2, peer_.get(i));
+      if (index_ != 0L) {
+        output.writeUInt64(2, index_);
+      }
+      if (type_ != proto.Raft.EntryType.ENTRY_TYPE_DATA.getNumber()) {
+        output.writeEnum(3, type_);
+      }
+      if (!data_.isEmpty()) {
+        output.writeBytes(4, data_);
       }
       unknownFields.writeTo(output);
     }
@@ -4825,13 +4829,21 @@ public final class Raft {
       if (size != -1) return size;
 
       size = 0;
-      if (node_ != null) {
+      if (term_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getNode());
+          .computeUInt64Size(1, term_);
       }
-      for (int i = 0; i < peer_.size(); i++) {
+      if (index_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, peer_.get(i));
+          .computeUInt64Size(2, index_);
+      }
+      if (type_ != proto.Raft.EntryType.ENTRY_TYPE_DATA.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(3, type_);
+      }
+      if (!data_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(4, data_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4843,18 +4855,18 @@ public final class Raft {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof proto.Raft.HyperCubeConfig)) {
+      if (!(obj instanceof proto.Raft.LogEntry)) {
         return super.equals(obj);
       }
-      proto.Raft.HyperCubeConfig other = (proto.Raft.HyperCubeConfig) obj;
+      proto.Raft.LogEntry other = (proto.Raft.LogEntry) obj;
 
-      if (hasNode() != other.hasNode()) return false;
-      if (hasNode()) {
-        if (!getNode()
-            .equals(other.getNode())) return false;
-      }
-      if (!getPeerList()
-          .equals(other.getPeerList())) return false;
+      if (getTerm()
+          != other.getTerm()) return false;
+      if (getIndex()
+          != other.getIndex()) return false;
+      if (type_ != other.type_) return false;
+      if (!getData()
+          .equals(other.getData())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -4866,82 +4878,84 @@ public final class Raft {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasNode()) {
-        hash = (37 * hash) + NODE_FIELD_NUMBER;
-        hash = (53 * hash) + getNode().hashCode();
-      }
-      if (getPeerCount() > 0) {
-        hash = (37 * hash) + PEER_FIELD_NUMBER;
-        hash = (53 * hash) + getPeerList().hashCode();
-      }
+      hash = (37 * hash) + TERM_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getTerm());
+      hash = (37 * hash) + INDEX_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getIndex());
+      hash = (37 * hash) + TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + type_;
+      hash = (37 * hash) + DATA_FIELD_NUMBER;
+      hash = (53 * hash) + getData().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static proto.Raft.HyperCubeConfig parseFrom(
+    public static proto.Raft.LogEntry parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static proto.Raft.HyperCubeConfig parseFrom(
+    public static proto.Raft.LogEntry parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static proto.Raft.HyperCubeConfig parseFrom(
+    public static proto.Raft.LogEntry parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static proto.Raft.HyperCubeConfig parseFrom(
+    public static proto.Raft.LogEntry parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static proto.Raft.HyperCubeConfig parseFrom(byte[] data)
+    public static proto.Raft.LogEntry parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static proto.Raft.HyperCubeConfig parseFrom(
+    public static proto.Raft.LogEntry parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static proto.Raft.HyperCubeConfig parseFrom(java.io.InputStream input)
+    public static proto.Raft.LogEntry parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static proto.Raft.HyperCubeConfig parseFrom(
+    public static proto.Raft.LogEntry parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static proto.Raft.HyperCubeConfig parseDelimitedFrom(java.io.InputStream input)
+    public static proto.Raft.LogEntry parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static proto.Raft.HyperCubeConfig parseDelimitedFrom(
+    public static proto.Raft.LogEntry parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static proto.Raft.HyperCubeConfig parseFrom(
+    public static proto.Raft.LogEntry parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static proto.Raft.HyperCubeConfig parseFrom(
+    public static proto.Raft.LogEntry parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -4954,7 +4968,7 @@ public final class Raft {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(proto.Raft.HyperCubeConfig prototype) {
+    public static Builder newBuilder(proto.Raft.LogEntry prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -4970,26 +4984,26 @@ public final class Raft {
       return builder;
     }
     /**
-     * Protobuf type {@code proto.HyperCubeConfig}
+     * Protobuf type {@code proto.LogEntry}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:proto.HyperCubeConfig)
-        proto.Raft.HyperCubeConfigOrBuilder {
+        // @@protoc_insertion_point(builder_implements:proto.LogEntry)
+        proto.Raft.LogEntryOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return proto.Raft.internal_static_proto_HyperCubeConfig_descriptor;
+        return proto.Raft.internal_static_proto_LogEntry_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return proto.Raft.internal_static_proto_HyperCubeConfig_fieldAccessorTable
+        return proto.Raft.internal_static_proto_LogEntry_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                proto.Raft.HyperCubeConfig.class, proto.Raft.HyperCubeConfig.Builder.class);
+                proto.Raft.LogEntry.class, proto.Raft.LogEntry.Builder.class);
       }
 
-      // Construct using proto.Raft.HyperCubeConfig.newBuilder()
+      // Construct using proto.Raft.LogEntry.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -5002,41 +5016,36 @@ public final class Raft {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
-          getPeerFieldBuilder();
         }
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (nodeBuilder_ == null) {
-          node_ = null;
-        } else {
-          node_ = null;
-          nodeBuilder_ = null;
-        }
-        if (peerBuilder_ == null) {
-          peer_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
-        } else {
-          peerBuilder_.clear();
-        }
+        term_ = 0L;
+
+        index_ = 0L;
+
+        type_ = 0;
+
+        data_ = com.google.protobuf.ByteString.EMPTY;
+
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return proto.Raft.internal_static_proto_HyperCubeConfig_descriptor;
+        return proto.Raft.internal_static_proto_LogEntry_descriptor;
       }
 
       @java.lang.Override
-      public proto.Raft.HyperCubeConfig getDefaultInstanceForType() {
-        return proto.Raft.HyperCubeConfig.getDefaultInstance();
+      public proto.Raft.LogEntry getDefaultInstanceForType() {
+        return proto.Raft.LogEntry.getDefaultInstance();
       }
 
       @java.lang.Override
-      public proto.Raft.HyperCubeConfig build() {
-        proto.Raft.HyperCubeConfig result = buildPartial();
+      public proto.Raft.LogEntry build() {
+        proto.Raft.LogEntry result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -5044,23 +5053,12 @@ public final class Raft {
       }
 
       @java.lang.Override
-      public proto.Raft.HyperCubeConfig buildPartial() {
-        proto.Raft.HyperCubeConfig result = new proto.Raft.HyperCubeConfig(this);
-        int from_bitField0_ = bitField0_;
-        if (nodeBuilder_ == null) {
-          result.node_ = node_;
-        } else {
-          result.node_ = nodeBuilder_.build();
-        }
-        if (peerBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) != 0)) {
-            peer_ = java.util.Collections.unmodifiableList(peer_);
-            bitField0_ = (bitField0_ & ~0x00000001);
-          }
-          result.peer_ = peer_;
-        } else {
-          result.peer_ = peerBuilder_.build();
-        }
+      public proto.Raft.LogEntry buildPartial() {
+        proto.Raft.LogEntry result = new proto.Raft.LogEntry(this);
+        result.term_ = term_;
+        result.index_ = index_;
+        result.type_ = type_;
+        result.data_ = data_;
         onBuilt();
         return result;
       }
@@ -5099,44 +5097,27 @@ public final class Raft {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof proto.Raft.HyperCubeConfig) {
-          return mergeFrom((proto.Raft.HyperCubeConfig)other);
+        if (other instanceof proto.Raft.LogEntry) {
+          return mergeFrom((proto.Raft.LogEntry)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(proto.Raft.HyperCubeConfig other) {
-        if (other == proto.Raft.HyperCubeConfig.getDefaultInstance()) return this;
-        if (other.hasNode()) {
-          mergeNode(other.getNode());
+      public Builder mergeFrom(proto.Raft.LogEntry other) {
+        if (other == proto.Raft.LogEntry.getDefaultInstance()) return this;
+        if (other.getTerm() != 0L) {
+          setTerm(other.getTerm());
         }
-        if (peerBuilder_ == null) {
-          if (!other.peer_.isEmpty()) {
-            if (peer_.isEmpty()) {
-              peer_ = other.peer_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-            } else {
-              ensurePeerIsMutable();
-              peer_.addAll(other.peer_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.peer_.isEmpty()) {
-            if (peerBuilder_.isEmpty()) {
-              peerBuilder_.dispose();
-              peerBuilder_ = null;
-              peer_ = other.peer_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-              peerBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getPeerFieldBuilder() : null;
-            } else {
-              peerBuilder_.addAllMessages(other.peer_);
-            }
-          }
+        if (other.getIndex() != 0L) {
+          setIndex(other.getIndex());
+        }
+        if (other.type_ != 0) {
+          setTypeValue(other.getTypeValue());
+        }
+        if (other.getData() != com.google.protobuf.ByteString.EMPTY) {
+          setData(other.getData());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -5153,11 +5134,11 @@ public final class Raft {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        proto.Raft.HyperCubeConfig parsedMessage = null;
+        proto.Raft.LogEntry parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (proto.Raft.HyperCubeConfig) e.getUnfinishedMessage();
+          parsedMessage = (proto.Raft.LogEntry) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -5166,363 +5147,131 @@ public final class Raft {
         }
         return this;
       }
-      private int bitField0_;
 
-      private proto.Raft.Node node_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          proto.Raft.Node, proto.Raft.Node.Builder, proto.Raft.NodeOrBuilder> nodeBuilder_;
+      private long term_ ;
       /**
-       * <code>.proto.Node node = 1;</code>
+       * <code>uint64 term = 1;</code>
        */
-      public boolean hasNode() {
-        return nodeBuilder_ != null || node_ != null;
+      public long getTerm() {
+        return term_;
       }
       /**
-       * <code>.proto.Node node = 1;</code>
+       * <code>uint64 term = 1;</code>
        */
-      public proto.Raft.Node getNode() {
-        if (nodeBuilder_ == null) {
-          return node_ == null ? proto.Raft.Node.getDefaultInstance() : node_;
-        } else {
-          return nodeBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>.proto.Node node = 1;</code>
-       */
-      public Builder setNode(proto.Raft.Node value) {
-        if (nodeBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          node_ = value;
-          onChanged();
-        } else {
-          nodeBuilder_.setMessage(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.proto.Node node = 1;</code>
-       */
-      public Builder setNode(
-          proto.Raft.Node.Builder builderForValue) {
-        if (nodeBuilder_ == null) {
-          node_ = builderForValue.build();
-          onChanged();
-        } else {
-          nodeBuilder_.setMessage(builderForValue.build());
-        }
-
-        return this;
-      }
-      /**
-       * <code>.proto.Node node = 1;</code>
-       */
-      public Builder mergeNode(proto.Raft.Node value) {
-        if (nodeBuilder_ == null) {
-          if (node_ != null) {
-            node_ =
-              proto.Raft.Node.newBuilder(node_).mergeFrom(value).buildPartial();
-          } else {
-            node_ = value;
-          }
-          onChanged();
-        } else {
-          nodeBuilder_.mergeFrom(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.proto.Node node = 1;</code>
-       */
-      public Builder clearNode() {
-        if (nodeBuilder_ == null) {
-          node_ = null;
-          onChanged();
-        } else {
-          node_ = null;
-          nodeBuilder_ = null;
-        }
-
-        return this;
-      }
-      /**
-       * <code>.proto.Node node = 1;</code>
-       */
-      public proto.Raft.Node.Builder getNodeBuilder() {
+      public Builder setTerm(long value) {
         
+        term_ = value;
         onChanged();
-        return getNodeFieldBuilder().getBuilder();
+        return this;
       }
       /**
-       * <code>.proto.Node node = 1;</code>
+       * <code>uint64 term = 1;</code>
        */
-      public proto.Raft.NodeOrBuilder getNodeOrBuilder() {
-        if (nodeBuilder_ != null) {
-          return nodeBuilder_.getMessageOrBuilder();
-        } else {
-          return node_ == null ?
-              proto.Raft.Node.getDefaultInstance() : node_;
-        }
-      }
-      /**
-       * <code>.proto.Node node = 1;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          proto.Raft.Node, proto.Raft.Node.Builder, proto.Raft.NodeOrBuilder> 
-          getNodeFieldBuilder() {
-        if (nodeBuilder_ == null) {
-          nodeBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              proto.Raft.Node, proto.Raft.Node.Builder, proto.Raft.NodeOrBuilder>(
-                  getNode(),
-                  getParentForChildren(),
-                  isClean());
-          node_ = null;
-        }
-        return nodeBuilder_;
+      public Builder clearTerm() {
+        
+        term_ = 0L;
+        onChanged();
+        return this;
       }
 
-      private java.util.List<proto.Raft.Node> peer_ =
-        java.util.Collections.emptyList();
-      private void ensurePeerIsMutable() {
-        if (!((bitField0_ & 0x00000001) != 0)) {
-          peer_ = new java.util.ArrayList<proto.Raft.Node>(peer_);
-          bitField0_ |= 0x00000001;
-         }
+      private long index_ ;
+      /**
+       * <code>uint64 index = 2;</code>
+       */
+      public long getIndex() {
+        return index_;
+      }
+      /**
+       * <code>uint64 index = 2;</code>
+       */
+      public Builder setIndex(long value) {
+        
+        index_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint64 index = 2;</code>
+       */
+      public Builder clearIndex() {
+        
+        index_ = 0L;
+        onChanged();
+        return this;
       }
 
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          proto.Raft.Node, proto.Raft.Node.Builder, proto.Raft.NodeOrBuilder> peerBuilder_;
+      private int type_ = 0;
+      /**
+       * <code>.proto.EntryType type = 3;</code>
+       */
+      public int getTypeValue() {
+        return type_;
+      }
+      /**
+       * <code>.proto.EntryType type = 3;</code>
+       */
+      public Builder setTypeValue(int value) {
+        type_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.proto.EntryType type = 3;</code>
+       */
+      public proto.Raft.EntryType getType() {
+        @SuppressWarnings("deprecation")
+        proto.Raft.EntryType result = proto.Raft.EntryType.valueOf(type_);
+        return result == null ? proto.Raft.EntryType.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>.proto.EntryType type = 3;</code>
+       */
+      public Builder setType(proto.Raft.EntryType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        type_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.proto.EntryType type = 3;</code>
+       */
+      public Builder clearType() {
+        
+        type_ = 0;
+        onChanged();
+        return this;
+      }
 
+      private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>repeated .proto.Node peer = 2;</code>
+       * <code>bytes data = 4;</code>
        */
-      public java.util.List<proto.Raft.Node> getPeerList() {
-        if (peerBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(peer_);
-        } else {
-          return peerBuilder_.getMessageList();
-        }
+      public com.google.protobuf.ByteString getData() {
+        return data_;
       }
       /**
-       * <code>repeated .proto.Node peer = 2;</code>
+       * <code>bytes data = 4;</code>
        */
-      public int getPeerCount() {
-        if (peerBuilder_ == null) {
-          return peer_.size();
-        } else {
-          return peerBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .proto.Node peer = 2;</code>
-       */
-      public proto.Raft.Node getPeer(int index) {
-        if (peerBuilder_ == null) {
-          return peer_.get(index);
-        } else {
-          return peerBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .proto.Node peer = 2;</code>
-       */
-      public Builder setPeer(
-          int index, proto.Raft.Node value) {
-        if (peerBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensurePeerIsMutable();
-          peer_.set(index, value);
-          onChanged();
-        } else {
-          peerBuilder_.setMessage(index, value);
-        }
+      public Builder setData(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        data_ = value;
+        onChanged();
         return this;
       }
       /**
-       * <code>repeated .proto.Node peer = 2;</code>
+       * <code>bytes data = 4;</code>
        */
-      public Builder setPeer(
-          int index, proto.Raft.Node.Builder builderForValue) {
-        if (peerBuilder_ == null) {
-          ensurePeerIsMutable();
-          peer_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          peerBuilder_.setMessage(index, builderForValue.build());
-        }
+      public Builder clearData() {
+        
+        data_ = getDefaultInstance().getData();
+        onChanged();
         return this;
-      }
-      /**
-       * <code>repeated .proto.Node peer = 2;</code>
-       */
-      public Builder addPeer(proto.Raft.Node value) {
-        if (peerBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensurePeerIsMutable();
-          peer_.add(value);
-          onChanged();
-        } else {
-          peerBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .proto.Node peer = 2;</code>
-       */
-      public Builder addPeer(
-          int index, proto.Raft.Node value) {
-        if (peerBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensurePeerIsMutable();
-          peer_.add(index, value);
-          onChanged();
-        } else {
-          peerBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .proto.Node peer = 2;</code>
-       */
-      public Builder addPeer(
-          proto.Raft.Node.Builder builderForValue) {
-        if (peerBuilder_ == null) {
-          ensurePeerIsMutable();
-          peer_.add(builderForValue.build());
-          onChanged();
-        } else {
-          peerBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .proto.Node peer = 2;</code>
-       */
-      public Builder addPeer(
-          int index, proto.Raft.Node.Builder builderForValue) {
-        if (peerBuilder_ == null) {
-          ensurePeerIsMutable();
-          peer_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          peerBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .proto.Node peer = 2;</code>
-       */
-      public Builder addAllPeer(
-          java.lang.Iterable<? extends proto.Raft.Node> values) {
-        if (peerBuilder_ == null) {
-          ensurePeerIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, peer_);
-          onChanged();
-        } else {
-          peerBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .proto.Node peer = 2;</code>
-       */
-      public Builder clearPeer() {
-        if (peerBuilder_ == null) {
-          peer_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
-          onChanged();
-        } else {
-          peerBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .proto.Node peer = 2;</code>
-       */
-      public Builder removePeer(int index) {
-        if (peerBuilder_ == null) {
-          ensurePeerIsMutable();
-          peer_.remove(index);
-          onChanged();
-        } else {
-          peerBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .proto.Node peer = 2;</code>
-       */
-      public proto.Raft.Node.Builder getPeerBuilder(
-          int index) {
-        return getPeerFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .proto.Node peer = 2;</code>
-       */
-      public proto.Raft.NodeOrBuilder getPeerOrBuilder(
-          int index) {
-        if (peerBuilder_ == null) {
-          return peer_.get(index);  } else {
-          return peerBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .proto.Node peer = 2;</code>
-       */
-      public java.util.List<? extends proto.Raft.NodeOrBuilder> 
-           getPeerOrBuilderList() {
-        if (peerBuilder_ != null) {
-          return peerBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(peer_);
-        }
-      }
-      /**
-       * <code>repeated .proto.Node peer = 2;</code>
-       */
-      public proto.Raft.Node.Builder addPeerBuilder() {
-        return getPeerFieldBuilder().addBuilder(
-            proto.Raft.Node.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .proto.Node peer = 2;</code>
-       */
-      public proto.Raft.Node.Builder addPeerBuilder(
-          int index) {
-        return getPeerFieldBuilder().addBuilder(
-            index, proto.Raft.Node.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .proto.Node peer = 2;</code>
-       */
-      public java.util.List<proto.Raft.Node.Builder> 
-           getPeerBuilderList() {
-        return getPeerFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          proto.Raft.Node, proto.Raft.Node.Builder, proto.Raft.NodeOrBuilder> 
-          getPeerFieldBuilder() {
-        if (peerBuilder_ == null) {
-          peerBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              proto.Raft.Node, proto.Raft.Node.Builder, proto.Raft.NodeOrBuilder>(
-                  peer_,
-                  ((bitField0_ & 0x00000001) != 0),
-                  getParentForChildren(),
-                  isClean());
-          peer_ = null;
-        }
-        return peerBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -5537,41 +5286,2895 @@ public final class Raft {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:proto.HyperCubeConfig)
+      // @@protoc_insertion_point(builder_scope:proto.LogEntry)
     }
 
-    // @@protoc_insertion_point(class_scope:proto.HyperCubeConfig)
-    private static final proto.Raft.HyperCubeConfig DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:proto.LogEntry)
+    private static final proto.Raft.LogEntry DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new proto.Raft.HyperCubeConfig();
+      DEFAULT_INSTANCE = new proto.Raft.LogEntry();
     }
 
-    public static proto.Raft.HyperCubeConfig getDefaultInstance() {
+    public static proto.Raft.LogEntry getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<HyperCubeConfig>
-        PARSER = new com.google.protobuf.AbstractParser<HyperCubeConfig>() {
+    private static final com.google.protobuf.Parser<LogEntry>
+        PARSER = new com.google.protobuf.AbstractParser<LogEntry>() {
       @java.lang.Override
-      public HyperCubeConfig parsePartialFrom(
+      public LogEntry parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new HyperCubeConfig(input, extensionRegistry);
+        return new LogEntry(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<HyperCubeConfig> parser() {
+    public static com.google.protobuf.Parser<LogEntry> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<HyperCubeConfig> getParserForType() {
+    public com.google.protobuf.Parser<LogEntry> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public proto.Raft.HyperCubeConfig getDefaultInstanceForType() {
+    public proto.Raft.LogEntry getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface InstallSnapshotRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:proto.InstallSnapshotRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>uint32 server_id = 1;</code>
+     */
+    int getServerId();
+
+    /**
+     * <code>uint64 term = 2;</code>
+     */
+    long getTerm();
+
+    /**
+     * <code>.proto.SnapshotMetaData snapshot_meta_data = 3;</code>
+     */
+    boolean hasSnapshotMetaData();
+    /**
+     * <code>.proto.SnapshotMetaData snapshot_meta_data = 3;</code>
+     */
+    proto.Raft.SnapshotMetaData getSnapshotMetaData();
+    /**
+     * <code>.proto.SnapshotMetaData snapshot_meta_data = 3;</code>
+     */
+    proto.Raft.SnapshotMetaDataOrBuilder getSnapshotMetaDataOrBuilder();
+
+    /**
+     * <code>string file_name = 4;</code>
+     */
+    java.lang.String getFileName();
+    /**
+     * <code>string file_name = 4;</code>
+     */
+    com.google.protobuf.ByteString
+        getFileNameBytes();
+
+    /**
+     * <code>uint64 offset = 5;</code>
+     */
+    long getOffset();
+
+    /**
+     * <code>bytes data = 6;</code>
+     */
+    com.google.protobuf.ByteString getData();
+
+    /**
+     * <code>bool is_first = 7;</code>
+     */
+    boolean getIsFirst();
+
+    /**
+     * <code>bool is_last = 8;</code>
+     */
+    boolean getIsLast();
+  }
+  /**
+   * Protobuf type {@code proto.InstallSnapshotRequest}
+   */
+  public  static final class InstallSnapshotRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:proto.InstallSnapshotRequest)
+      InstallSnapshotRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use InstallSnapshotRequest.newBuilder() to construct.
+    private InstallSnapshotRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private InstallSnapshotRequest() {
+      fileName_ = "";
+      data_ = com.google.protobuf.ByteString.EMPTY;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new InstallSnapshotRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private InstallSnapshotRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              serverId_ = input.readUInt32();
+              break;
+            }
+            case 16: {
+
+              term_ = input.readUInt64();
+              break;
+            }
+            case 26: {
+              proto.Raft.SnapshotMetaData.Builder subBuilder = null;
+              if (snapshotMetaData_ != null) {
+                subBuilder = snapshotMetaData_.toBuilder();
+              }
+              snapshotMetaData_ = input.readMessage(proto.Raft.SnapshotMetaData.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(snapshotMetaData_);
+                snapshotMetaData_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              fileName_ = s;
+              break;
+            }
+            case 40: {
+
+              offset_ = input.readUInt64();
+              break;
+            }
+            case 50: {
+
+              data_ = input.readBytes();
+              break;
+            }
+            case 56: {
+
+              isFirst_ = input.readBool();
+              break;
+            }
+            case 64: {
+
+              isLast_ = input.readBool();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return proto.Raft.internal_static_proto_InstallSnapshotRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return proto.Raft.internal_static_proto_InstallSnapshotRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              proto.Raft.InstallSnapshotRequest.class, proto.Raft.InstallSnapshotRequest.Builder.class);
+    }
+
+    public static final int SERVER_ID_FIELD_NUMBER = 1;
+    private int serverId_;
+    /**
+     * <code>uint32 server_id = 1;</code>
+     */
+    public int getServerId() {
+      return serverId_;
+    }
+
+    public static final int TERM_FIELD_NUMBER = 2;
+    private long term_;
+    /**
+     * <code>uint64 term = 2;</code>
+     */
+    public long getTerm() {
+      return term_;
+    }
+
+    public static final int SNAPSHOT_META_DATA_FIELD_NUMBER = 3;
+    private proto.Raft.SnapshotMetaData snapshotMetaData_;
+    /**
+     * <code>.proto.SnapshotMetaData snapshot_meta_data = 3;</code>
+     */
+    public boolean hasSnapshotMetaData() {
+      return snapshotMetaData_ != null;
+    }
+    /**
+     * <code>.proto.SnapshotMetaData snapshot_meta_data = 3;</code>
+     */
+    public proto.Raft.SnapshotMetaData getSnapshotMetaData() {
+      return snapshotMetaData_ == null ? proto.Raft.SnapshotMetaData.getDefaultInstance() : snapshotMetaData_;
+    }
+    /**
+     * <code>.proto.SnapshotMetaData snapshot_meta_data = 3;</code>
+     */
+    public proto.Raft.SnapshotMetaDataOrBuilder getSnapshotMetaDataOrBuilder() {
+      return getSnapshotMetaData();
+    }
+
+    public static final int FILE_NAME_FIELD_NUMBER = 4;
+    private volatile java.lang.Object fileName_;
+    /**
+     * <code>string file_name = 4;</code>
+     */
+    public java.lang.String getFileName() {
+      java.lang.Object ref = fileName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        fileName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string file_name = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getFileNameBytes() {
+      java.lang.Object ref = fileName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        fileName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int OFFSET_FIELD_NUMBER = 5;
+    private long offset_;
+    /**
+     * <code>uint64 offset = 5;</code>
+     */
+    public long getOffset() {
+      return offset_;
+    }
+
+    public static final int DATA_FIELD_NUMBER = 6;
+    private com.google.protobuf.ByteString data_;
+    /**
+     * <code>bytes data = 6;</code>
+     */
+    public com.google.protobuf.ByteString getData() {
+      return data_;
+    }
+
+    public static final int IS_FIRST_FIELD_NUMBER = 7;
+    private boolean isFirst_;
+    /**
+     * <code>bool is_first = 7;</code>
+     */
+    public boolean getIsFirst() {
+      return isFirst_;
+    }
+
+    public static final int IS_LAST_FIELD_NUMBER = 8;
+    private boolean isLast_;
+    /**
+     * <code>bool is_last = 8;</code>
+     */
+    public boolean getIsLast() {
+      return isLast_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (serverId_ != 0) {
+        output.writeUInt32(1, serverId_);
+      }
+      if (term_ != 0L) {
+        output.writeUInt64(2, term_);
+      }
+      if (snapshotMetaData_ != null) {
+        output.writeMessage(3, getSnapshotMetaData());
+      }
+      if (!getFileNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, fileName_);
+      }
+      if (offset_ != 0L) {
+        output.writeUInt64(5, offset_);
+      }
+      if (!data_.isEmpty()) {
+        output.writeBytes(6, data_);
+      }
+      if (isFirst_ != false) {
+        output.writeBool(7, isFirst_);
+      }
+      if (isLast_ != false) {
+        output.writeBool(8, isLast_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (serverId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(1, serverId_);
+      }
+      if (term_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(2, term_);
+      }
+      if (snapshotMetaData_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, getSnapshotMetaData());
+      }
+      if (!getFileNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, fileName_);
+      }
+      if (offset_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(5, offset_);
+      }
+      if (!data_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(6, data_);
+      }
+      if (isFirst_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(7, isFirst_);
+      }
+      if (isLast_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(8, isLast_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof proto.Raft.InstallSnapshotRequest)) {
+        return super.equals(obj);
+      }
+      proto.Raft.InstallSnapshotRequest other = (proto.Raft.InstallSnapshotRequest) obj;
+
+      if (getServerId()
+          != other.getServerId()) return false;
+      if (getTerm()
+          != other.getTerm()) return false;
+      if (hasSnapshotMetaData() != other.hasSnapshotMetaData()) return false;
+      if (hasSnapshotMetaData()) {
+        if (!getSnapshotMetaData()
+            .equals(other.getSnapshotMetaData())) return false;
+      }
+      if (!getFileName()
+          .equals(other.getFileName())) return false;
+      if (getOffset()
+          != other.getOffset()) return false;
+      if (!getData()
+          .equals(other.getData())) return false;
+      if (getIsFirst()
+          != other.getIsFirst()) return false;
+      if (getIsLast()
+          != other.getIsLast()) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + SERVER_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getServerId();
+      hash = (37 * hash) + TERM_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getTerm());
+      if (hasSnapshotMetaData()) {
+        hash = (37 * hash) + SNAPSHOT_META_DATA_FIELD_NUMBER;
+        hash = (53 * hash) + getSnapshotMetaData().hashCode();
+      }
+      hash = (37 * hash) + FILE_NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getFileName().hashCode();
+      hash = (37 * hash) + OFFSET_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getOffset());
+      hash = (37 * hash) + DATA_FIELD_NUMBER;
+      hash = (53 * hash) + getData().hashCode();
+      hash = (37 * hash) + IS_FIRST_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getIsFirst());
+      hash = (37 * hash) + IS_LAST_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getIsLast());
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static proto.Raft.InstallSnapshotRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto.Raft.InstallSnapshotRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto.Raft.InstallSnapshotRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto.Raft.InstallSnapshotRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto.Raft.InstallSnapshotRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto.Raft.InstallSnapshotRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto.Raft.InstallSnapshotRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto.Raft.InstallSnapshotRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static proto.Raft.InstallSnapshotRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static proto.Raft.InstallSnapshotRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static proto.Raft.InstallSnapshotRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto.Raft.InstallSnapshotRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(proto.Raft.InstallSnapshotRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code proto.InstallSnapshotRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:proto.InstallSnapshotRequest)
+        proto.Raft.InstallSnapshotRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return proto.Raft.internal_static_proto_InstallSnapshotRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return proto.Raft.internal_static_proto_InstallSnapshotRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                proto.Raft.InstallSnapshotRequest.class, proto.Raft.InstallSnapshotRequest.Builder.class);
+      }
+
+      // Construct using proto.Raft.InstallSnapshotRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        serverId_ = 0;
+
+        term_ = 0L;
+
+        if (snapshotMetaDataBuilder_ == null) {
+          snapshotMetaData_ = null;
+        } else {
+          snapshotMetaData_ = null;
+          snapshotMetaDataBuilder_ = null;
+        }
+        fileName_ = "";
+
+        offset_ = 0L;
+
+        data_ = com.google.protobuf.ByteString.EMPTY;
+
+        isFirst_ = false;
+
+        isLast_ = false;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return proto.Raft.internal_static_proto_InstallSnapshotRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public proto.Raft.InstallSnapshotRequest getDefaultInstanceForType() {
+        return proto.Raft.InstallSnapshotRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public proto.Raft.InstallSnapshotRequest build() {
+        proto.Raft.InstallSnapshotRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public proto.Raft.InstallSnapshotRequest buildPartial() {
+        proto.Raft.InstallSnapshotRequest result = new proto.Raft.InstallSnapshotRequest(this);
+        result.serverId_ = serverId_;
+        result.term_ = term_;
+        if (snapshotMetaDataBuilder_ == null) {
+          result.snapshotMetaData_ = snapshotMetaData_;
+        } else {
+          result.snapshotMetaData_ = snapshotMetaDataBuilder_.build();
+        }
+        result.fileName_ = fileName_;
+        result.offset_ = offset_;
+        result.data_ = data_;
+        result.isFirst_ = isFirst_;
+        result.isLast_ = isLast_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof proto.Raft.InstallSnapshotRequest) {
+          return mergeFrom((proto.Raft.InstallSnapshotRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(proto.Raft.InstallSnapshotRequest other) {
+        if (other == proto.Raft.InstallSnapshotRequest.getDefaultInstance()) return this;
+        if (other.getServerId() != 0) {
+          setServerId(other.getServerId());
+        }
+        if (other.getTerm() != 0L) {
+          setTerm(other.getTerm());
+        }
+        if (other.hasSnapshotMetaData()) {
+          mergeSnapshotMetaData(other.getSnapshotMetaData());
+        }
+        if (!other.getFileName().isEmpty()) {
+          fileName_ = other.fileName_;
+          onChanged();
+        }
+        if (other.getOffset() != 0L) {
+          setOffset(other.getOffset());
+        }
+        if (other.getData() != com.google.protobuf.ByteString.EMPTY) {
+          setData(other.getData());
+        }
+        if (other.getIsFirst() != false) {
+          setIsFirst(other.getIsFirst());
+        }
+        if (other.getIsLast() != false) {
+          setIsLast(other.getIsLast());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        proto.Raft.InstallSnapshotRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (proto.Raft.InstallSnapshotRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int serverId_ ;
+      /**
+       * <code>uint32 server_id = 1;</code>
+       */
+      public int getServerId() {
+        return serverId_;
+      }
+      /**
+       * <code>uint32 server_id = 1;</code>
+       */
+      public Builder setServerId(int value) {
+        
+        serverId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 server_id = 1;</code>
+       */
+      public Builder clearServerId() {
+        
+        serverId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private long term_ ;
+      /**
+       * <code>uint64 term = 2;</code>
+       */
+      public long getTerm() {
+        return term_;
+      }
+      /**
+       * <code>uint64 term = 2;</code>
+       */
+      public Builder setTerm(long value) {
+        
+        term_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint64 term = 2;</code>
+       */
+      public Builder clearTerm() {
+        
+        term_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private proto.Raft.SnapshotMetaData snapshotMetaData_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          proto.Raft.SnapshotMetaData, proto.Raft.SnapshotMetaData.Builder, proto.Raft.SnapshotMetaDataOrBuilder> snapshotMetaDataBuilder_;
+      /**
+       * <code>.proto.SnapshotMetaData snapshot_meta_data = 3;</code>
+       */
+      public boolean hasSnapshotMetaData() {
+        return snapshotMetaDataBuilder_ != null || snapshotMetaData_ != null;
+      }
+      /**
+       * <code>.proto.SnapshotMetaData snapshot_meta_data = 3;</code>
+       */
+      public proto.Raft.SnapshotMetaData getSnapshotMetaData() {
+        if (snapshotMetaDataBuilder_ == null) {
+          return snapshotMetaData_ == null ? proto.Raft.SnapshotMetaData.getDefaultInstance() : snapshotMetaData_;
+        } else {
+          return snapshotMetaDataBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.proto.SnapshotMetaData snapshot_meta_data = 3;</code>
+       */
+      public Builder setSnapshotMetaData(proto.Raft.SnapshotMetaData value) {
+        if (snapshotMetaDataBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          snapshotMetaData_ = value;
+          onChanged();
+        } else {
+          snapshotMetaDataBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.proto.SnapshotMetaData snapshot_meta_data = 3;</code>
+       */
+      public Builder setSnapshotMetaData(
+          proto.Raft.SnapshotMetaData.Builder builderForValue) {
+        if (snapshotMetaDataBuilder_ == null) {
+          snapshotMetaData_ = builderForValue.build();
+          onChanged();
+        } else {
+          snapshotMetaDataBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.proto.SnapshotMetaData snapshot_meta_data = 3;</code>
+       */
+      public Builder mergeSnapshotMetaData(proto.Raft.SnapshotMetaData value) {
+        if (snapshotMetaDataBuilder_ == null) {
+          if (snapshotMetaData_ != null) {
+            snapshotMetaData_ =
+              proto.Raft.SnapshotMetaData.newBuilder(snapshotMetaData_).mergeFrom(value).buildPartial();
+          } else {
+            snapshotMetaData_ = value;
+          }
+          onChanged();
+        } else {
+          snapshotMetaDataBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.proto.SnapshotMetaData snapshot_meta_data = 3;</code>
+       */
+      public Builder clearSnapshotMetaData() {
+        if (snapshotMetaDataBuilder_ == null) {
+          snapshotMetaData_ = null;
+          onChanged();
+        } else {
+          snapshotMetaData_ = null;
+          snapshotMetaDataBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.proto.SnapshotMetaData snapshot_meta_data = 3;</code>
+       */
+      public proto.Raft.SnapshotMetaData.Builder getSnapshotMetaDataBuilder() {
+        
+        onChanged();
+        return getSnapshotMetaDataFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.proto.SnapshotMetaData snapshot_meta_data = 3;</code>
+       */
+      public proto.Raft.SnapshotMetaDataOrBuilder getSnapshotMetaDataOrBuilder() {
+        if (snapshotMetaDataBuilder_ != null) {
+          return snapshotMetaDataBuilder_.getMessageOrBuilder();
+        } else {
+          return snapshotMetaData_ == null ?
+              proto.Raft.SnapshotMetaData.getDefaultInstance() : snapshotMetaData_;
+        }
+      }
+      /**
+       * <code>.proto.SnapshotMetaData snapshot_meta_data = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          proto.Raft.SnapshotMetaData, proto.Raft.SnapshotMetaData.Builder, proto.Raft.SnapshotMetaDataOrBuilder> 
+          getSnapshotMetaDataFieldBuilder() {
+        if (snapshotMetaDataBuilder_ == null) {
+          snapshotMetaDataBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              proto.Raft.SnapshotMetaData, proto.Raft.SnapshotMetaData.Builder, proto.Raft.SnapshotMetaDataOrBuilder>(
+                  getSnapshotMetaData(),
+                  getParentForChildren(),
+                  isClean());
+          snapshotMetaData_ = null;
+        }
+        return snapshotMetaDataBuilder_;
+      }
+
+      private java.lang.Object fileName_ = "";
+      /**
+       * <code>string file_name = 4;</code>
+       */
+      public java.lang.String getFileName() {
+        java.lang.Object ref = fileName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          fileName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string file_name = 4;</code>
+       */
+      public com.google.protobuf.ByteString
+          getFileNameBytes() {
+        java.lang.Object ref = fileName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          fileName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string file_name = 4;</code>
+       */
+      public Builder setFileName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        fileName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string file_name = 4;</code>
+       */
+      public Builder clearFileName() {
+        
+        fileName_ = getDefaultInstance().getFileName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string file_name = 4;</code>
+       */
+      public Builder setFileNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        fileName_ = value;
+        onChanged();
+        return this;
+      }
+
+      private long offset_ ;
+      /**
+       * <code>uint64 offset = 5;</code>
+       */
+      public long getOffset() {
+        return offset_;
+      }
+      /**
+       * <code>uint64 offset = 5;</code>
+       */
+      public Builder setOffset(long value) {
+        
+        offset_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint64 offset = 5;</code>
+       */
+      public Builder clearOffset() {
+        
+        offset_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>bytes data = 6;</code>
+       */
+      public com.google.protobuf.ByteString getData() {
+        return data_;
+      }
+      /**
+       * <code>bytes data = 6;</code>
+       */
+      public Builder setData(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        data_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bytes data = 6;</code>
+       */
+      public Builder clearData() {
+        
+        data_ = getDefaultInstance().getData();
+        onChanged();
+        return this;
+      }
+
+      private boolean isFirst_ ;
+      /**
+       * <code>bool is_first = 7;</code>
+       */
+      public boolean getIsFirst() {
+        return isFirst_;
+      }
+      /**
+       * <code>bool is_first = 7;</code>
+       */
+      public Builder setIsFirst(boolean value) {
+        
+        isFirst_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool is_first = 7;</code>
+       */
+      public Builder clearIsFirst() {
+        
+        isFirst_ = false;
+        onChanged();
+        return this;
+      }
+
+      private boolean isLast_ ;
+      /**
+       * <code>bool is_last = 8;</code>
+       */
+      public boolean getIsLast() {
+        return isLast_;
+      }
+      /**
+       * <code>bool is_last = 8;</code>
+       */
+      public Builder setIsLast(boolean value) {
+        
+        isLast_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool is_last = 8;</code>
+       */
+      public Builder clearIsLast() {
+        
+        isLast_ = false;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:proto.InstallSnapshotRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:proto.InstallSnapshotRequest)
+    private static final proto.Raft.InstallSnapshotRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new proto.Raft.InstallSnapshotRequest();
+    }
+
+    public static proto.Raft.InstallSnapshotRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<InstallSnapshotRequest>
+        PARSER = new com.google.protobuf.AbstractParser<InstallSnapshotRequest>() {
+      @java.lang.Override
+      public InstallSnapshotRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new InstallSnapshotRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<InstallSnapshotRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<InstallSnapshotRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public proto.Raft.InstallSnapshotRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface InstallSnapshotResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:proto.InstallSnapshotResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.proto.ResCode res_code = 1;</code>
+     */
+    int getResCodeValue();
+    /**
+     * <code>.proto.ResCode res_code = 1;</code>
+     */
+    proto.Util.ResCode getResCode();
+
+    /**
+     * <code>uint64 term = 2;</code>
+     */
+    long getTerm();
+  }
+  /**
+   * Protobuf type {@code proto.InstallSnapshotResponse}
+   */
+  public  static final class InstallSnapshotResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:proto.InstallSnapshotResponse)
+      InstallSnapshotResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use InstallSnapshotResponse.newBuilder() to construct.
+    private InstallSnapshotResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private InstallSnapshotResponse() {
+      resCode_ = 0;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new InstallSnapshotResponse();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private InstallSnapshotResponse(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+              int rawValue = input.readEnum();
+
+              resCode_ = rawValue;
+              break;
+            }
+            case 16: {
+
+              term_ = input.readUInt64();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return proto.Raft.internal_static_proto_InstallSnapshotResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return proto.Raft.internal_static_proto_InstallSnapshotResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              proto.Raft.InstallSnapshotResponse.class, proto.Raft.InstallSnapshotResponse.Builder.class);
+    }
+
+    public static final int RES_CODE_FIELD_NUMBER = 1;
+    private int resCode_;
+    /**
+     * <code>.proto.ResCode res_code = 1;</code>
+     */
+    public int getResCodeValue() {
+      return resCode_;
+    }
+    /**
+     * <code>.proto.ResCode res_code = 1;</code>
+     */
+    public proto.Util.ResCode getResCode() {
+      @SuppressWarnings("deprecation")
+      proto.Util.ResCode result = proto.Util.ResCode.valueOf(resCode_);
+      return result == null ? proto.Util.ResCode.UNRECOGNIZED : result;
+    }
+
+    public static final int TERM_FIELD_NUMBER = 2;
+    private long term_;
+    /**
+     * <code>uint64 term = 2;</code>
+     */
+    public long getTerm() {
+      return term_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (resCode_ != proto.Util.ResCode.SUCCESS.getNumber()) {
+        output.writeEnum(1, resCode_);
+      }
+      if (term_ != 0L) {
+        output.writeUInt64(2, term_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (resCode_ != proto.Util.ResCode.SUCCESS.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(1, resCode_);
+      }
+      if (term_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(2, term_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof proto.Raft.InstallSnapshotResponse)) {
+        return super.equals(obj);
+      }
+      proto.Raft.InstallSnapshotResponse other = (proto.Raft.InstallSnapshotResponse) obj;
+
+      if (resCode_ != other.resCode_) return false;
+      if (getTerm()
+          != other.getTerm()) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + RES_CODE_FIELD_NUMBER;
+      hash = (53 * hash) + resCode_;
+      hash = (37 * hash) + TERM_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getTerm());
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static proto.Raft.InstallSnapshotResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto.Raft.InstallSnapshotResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto.Raft.InstallSnapshotResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto.Raft.InstallSnapshotResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto.Raft.InstallSnapshotResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto.Raft.InstallSnapshotResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto.Raft.InstallSnapshotResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto.Raft.InstallSnapshotResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static proto.Raft.InstallSnapshotResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static proto.Raft.InstallSnapshotResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static proto.Raft.InstallSnapshotResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto.Raft.InstallSnapshotResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(proto.Raft.InstallSnapshotResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code proto.InstallSnapshotResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:proto.InstallSnapshotResponse)
+        proto.Raft.InstallSnapshotResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return proto.Raft.internal_static_proto_InstallSnapshotResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return proto.Raft.internal_static_proto_InstallSnapshotResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                proto.Raft.InstallSnapshotResponse.class, proto.Raft.InstallSnapshotResponse.Builder.class);
+      }
+
+      // Construct using proto.Raft.InstallSnapshotResponse.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        resCode_ = 0;
+
+        term_ = 0L;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return proto.Raft.internal_static_proto_InstallSnapshotResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public proto.Raft.InstallSnapshotResponse getDefaultInstanceForType() {
+        return proto.Raft.InstallSnapshotResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public proto.Raft.InstallSnapshotResponse build() {
+        proto.Raft.InstallSnapshotResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public proto.Raft.InstallSnapshotResponse buildPartial() {
+        proto.Raft.InstallSnapshotResponse result = new proto.Raft.InstallSnapshotResponse(this);
+        result.resCode_ = resCode_;
+        result.term_ = term_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof proto.Raft.InstallSnapshotResponse) {
+          return mergeFrom((proto.Raft.InstallSnapshotResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(proto.Raft.InstallSnapshotResponse other) {
+        if (other == proto.Raft.InstallSnapshotResponse.getDefaultInstance()) return this;
+        if (other.resCode_ != 0) {
+          setResCodeValue(other.getResCodeValue());
+        }
+        if (other.getTerm() != 0L) {
+          setTerm(other.getTerm());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        proto.Raft.InstallSnapshotResponse parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (proto.Raft.InstallSnapshotResponse) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int resCode_ = 0;
+      /**
+       * <code>.proto.ResCode res_code = 1;</code>
+       */
+      public int getResCodeValue() {
+        return resCode_;
+      }
+      /**
+       * <code>.proto.ResCode res_code = 1;</code>
+       */
+      public Builder setResCodeValue(int value) {
+        resCode_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.proto.ResCode res_code = 1;</code>
+       */
+      public proto.Util.ResCode getResCode() {
+        @SuppressWarnings("deprecation")
+        proto.Util.ResCode result = proto.Util.ResCode.valueOf(resCode_);
+        return result == null ? proto.Util.ResCode.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>.proto.ResCode res_code = 1;</code>
+       */
+      public Builder setResCode(proto.Util.ResCode value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        resCode_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.proto.ResCode res_code = 1;</code>
+       */
+      public Builder clearResCode() {
+        
+        resCode_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private long term_ ;
+      /**
+       * <code>uint64 term = 2;</code>
+       */
+      public long getTerm() {
+        return term_;
+      }
+      /**
+       * <code>uint64 term = 2;</code>
+       */
+      public Builder setTerm(long value) {
+        
+        term_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint64 term = 2;</code>
+       */
+      public Builder clearTerm() {
+        
+        term_ = 0L;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:proto.InstallSnapshotResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:proto.InstallSnapshotResponse)
+    private static final proto.Raft.InstallSnapshotResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new proto.Raft.InstallSnapshotResponse();
+    }
+
+    public static proto.Raft.InstallSnapshotResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<InstallSnapshotResponse>
+        PARSER = new com.google.protobuf.AbstractParser<InstallSnapshotResponse>() {
+      @java.lang.Override
+      public InstallSnapshotResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new InstallSnapshotResponse(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<InstallSnapshotResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<InstallSnapshotResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public proto.Raft.InstallSnapshotResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface LogMetaDataOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:proto.LogMetaData)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>uint64 current_term = 1;</code>
+     */
+    long getCurrentTerm();
+
+    /**
+     * <code>uint32 voted_for = 2;</code>
+     */
+    int getVotedFor();
+
+    /**
+     * <code>uint64 first_log_index = 3;</code>
+     */
+    long getFirstLogIndex();
+  }
+  /**
+   * Protobuf type {@code proto.LogMetaData}
+   */
+  public  static final class LogMetaData extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:proto.LogMetaData)
+      LogMetaDataOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use LogMetaData.newBuilder() to construct.
+    private LogMetaData(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private LogMetaData() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new LogMetaData();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private LogMetaData(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              currentTerm_ = input.readUInt64();
+              break;
+            }
+            case 16: {
+
+              votedFor_ = input.readUInt32();
+              break;
+            }
+            case 24: {
+
+              firstLogIndex_ = input.readUInt64();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return proto.Raft.internal_static_proto_LogMetaData_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return proto.Raft.internal_static_proto_LogMetaData_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              proto.Raft.LogMetaData.class, proto.Raft.LogMetaData.Builder.class);
+    }
+
+    public static final int CURRENT_TERM_FIELD_NUMBER = 1;
+    private long currentTerm_;
+    /**
+     * <code>uint64 current_term = 1;</code>
+     */
+    public long getCurrentTerm() {
+      return currentTerm_;
+    }
+
+    public static final int VOTED_FOR_FIELD_NUMBER = 2;
+    private int votedFor_;
+    /**
+     * <code>uint32 voted_for = 2;</code>
+     */
+    public int getVotedFor() {
+      return votedFor_;
+    }
+
+    public static final int FIRST_LOG_INDEX_FIELD_NUMBER = 3;
+    private long firstLogIndex_;
+    /**
+     * <code>uint64 first_log_index = 3;</code>
+     */
+    public long getFirstLogIndex() {
+      return firstLogIndex_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (currentTerm_ != 0L) {
+        output.writeUInt64(1, currentTerm_);
+      }
+      if (votedFor_ != 0) {
+        output.writeUInt32(2, votedFor_);
+      }
+      if (firstLogIndex_ != 0L) {
+        output.writeUInt64(3, firstLogIndex_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (currentTerm_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(1, currentTerm_);
+      }
+      if (votedFor_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(2, votedFor_);
+      }
+      if (firstLogIndex_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(3, firstLogIndex_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof proto.Raft.LogMetaData)) {
+        return super.equals(obj);
+      }
+      proto.Raft.LogMetaData other = (proto.Raft.LogMetaData) obj;
+
+      if (getCurrentTerm()
+          != other.getCurrentTerm()) return false;
+      if (getVotedFor()
+          != other.getVotedFor()) return false;
+      if (getFirstLogIndex()
+          != other.getFirstLogIndex()) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + CURRENT_TERM_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getCurrentTerm());
+      hash = (37 * hash) + VOTED_FOR_FIELD_NUMBER;
+      hash = (53 * hash) + getVotedFor();
+      hash = (37 * hash) + FIRST_LOG_INDEX_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getFirstLogIndex());
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static proto.Raft.LogMetaData parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto.Raft.LogMetaData parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto.Raft.LogMetaData parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto.Raft.LogMetaData parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto.Raft.LogMetaData parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto.Raft.LogMetaData parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto.Raft.LogMetaData parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto.Raft.LogMetaData parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static proto.Raft.LogMetaData parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static proto.Raft.LogMetaData parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static proto.Raft.LogMetaData parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto.Raft.LogMetaData parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(proto.Raft.LogMetaData prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code proto.LogMetaData}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:proto.LogMetaData)
+        proto.Raft.LogMetaDataOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return proto.Raft.internal_static_proto_LogMetaData_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return proto.Raft.internal_static_proto_LogMetaData_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                proto.Raft.LogMetaData.class, proto.Raft.LogMetaData.Builder.class);
+      }
+
+      // Construct using proto.Raft.LogMetaData.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        currentTerm_ = 0L;
+
+        votedFor_ = 0;
+
+        firstLogIndex_ = 0L;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return proto.Raft.internal_static_proto_LogMetaData_descriptor;
+      }
+
+      @java.lang.Override
+      public proto.Raft.LogMetaData getDefaultInstanceForType() {
+        return proto.Raft.LogMetaData.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public proto.Raft.LogMetaData build() {
+        proto.Raft.LogMetaData result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public proto.Raft.LogMetaData buildPartial() {
+        proto.Raft.LogMetaData result = new proto.Raft.LogMetaData(this);
+        result.currentTerm_ = currentTerm_;
+        result.votedFor_ = votedFor_;
+        result.firstLogIndex_ = firstLogIndex_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof proto.Raft.LogMetaData) {
+          return mergeFrom((proto.Raft.LogMetaData)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(proto.Raft.LogMetaData other) {
+        if (other == proto.Raft.LogMetaData.getDefaultInstance()) return this;
+        if (other.getCurrentTerm() != 0L) {
+          setCurrentTerm(other.getCurrentTerm());
+        }
+        if (other.getVotedFor() != 0) {
+          setVotedFor(other.getVotedFor());
+        }
+        if (other.getFirstLogIndex() != 0L) {
+          setFirstLogIndex(other.getFirstLogIndex());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        proto.Raft.LogMetaData parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (proto.Raft.LogMetaData) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private long currentTerm_ ;
+      /**
+       * <code>uint64 current_term = 1;</code>
+       */
+      public long getCurrentTerm() {
+        return currentTerm_;
+      }
+      /**
+       * <code>uint64 current_term = 1;</code>
+       */
+      public Builder setCurrentTerm(long value) {
+        
+        currentTerm_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint64 current_term = 1;</code>
+       */
+      public Builder clearCurrentTerm() {
+        
+        currentTerm_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private int votedFor_ ;
+      /**
+       * <code>uint32 voted_for = 2;</code>
+       */
+      public int getVotedFor() {
+        return votedFor_;
+      }
+      /**
+       * <code>uint32 voted_for = 2;</code>
+       */
+      public Builder setVotedFor(int value) {
+        
+        votedFor_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 voted_for = 2;</code>
+       */
+      public Builder clearVotedFor() {
+        
+        votedFor_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private long firstLogIndex_ ;
+      /**
+       * <code>uint64 first_log_index = 3;</code>
+       */
+      public long getFirstLogIndex() {
+        return firstLogIndex_;
+      }
+      /**
+       * <code>uint64 first_log_index = 3;</code>
+       */
+      public Builder setFirstLogIndex(long value) {
+        
+        firstLogIndex_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint64 first_log_index = 3;</code>
+       */
+      public Builder clearFirstLogIndex() {
+        
+        firstLogIndex_ = 0L;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:proto.LogMetaData)
+    }
+
+    // @@protoc_insertion_point(class_scope:proto.LogMetaData)
+    private static final proto.Raft.LogMetaData DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new proto.Raft.LogMetaData();
+    }
+
+    public static proto.Raft.LogMetaData getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<LogMetaData>
+        PARSER = new com.google.protobuf.AbstractParser<LogMetaData>() {
+      @java.lang.Override
+      public LogMetaData parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new LogMetaData(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<LogMetaData> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<LogMetaData> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public proto.Raft.LogMetaData getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface SnapshotMetaDataOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:proto.SnapshotMetaData)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>uint64 last_included_index = 1;</code>
+     */
+    long getLastIncludedIndex();
+
+    /**
+     * <code>uint64 last_included_term = 2;</code>
+     */
+    long getLastIncludedTerm();
+  }
+  /**
+   * Protobuf type {@code proto.SnapshotMetaData}
+   */
+  public  static final class SnapshotMetaData extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:proto.SnapshotMetaData)
+      SnapshotMetaDataOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use SnapshotMetaData.newBuilder() to construct.
+    private SnapshotMetaData(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private SnapshotMetaData() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new SnapshotMetaData();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SnapshotMetaData(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              lastIncludedIndex_ = input.readUInt64();
+              break;
+            }
+            case 16: {
+
+              lastIncludedTerm_ = input.readUInt64();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return proto.Raft.internal_static_proto_SnapshotMetaData_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return proto.Raft.internal_static_proto_SnapshotMetaData_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              proto.Raft.SnapshotMetaData.class, proto.Raft.SnapshotMetaData.Builder.class);
+    }
+
+    public static final int LAST_INCLUDED_INDEX_FIELD_NUMBER = 1;
+    private long lastIncludedIndex_;
+    /**
+     * <code>uint64 last_included_index = 1;</code>
+     */
+    public long getLastIncludedIndex() {
+      return lastIncludedIndex_;
+    }
+
+    public static final int LAST_INCLUDED_TERM_FIELD_NUMBER = 2;
+    private long lastIncludedTerm_;
+    /**
+     * <code>uint64 last_included_term = 2;</code>
+     */
+    public long getLastIncludedTerm() {
+      return lastIncludedTerm_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (lastIncludedIndex_ != 0L) {
+        output.writeUInt64(1, lastIncludedIndex_);
+      }
+      if (lastIncludedTerm_ != 0L) {
+        output.writeUInt64(2, lastIncludedTerm_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (lastIncludedIndex_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(1, lastIncludedIndex_);
+      }
+      if (lastIncludedTerm_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(2, lastIncludedTerm_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof proto.Raft.SnapshotMetaData)) {
+        return super.equals(obj);
+      }
+      proto.Raft.SnapshotMetaData other = (proto.Raft.SnapshotMetaData) obj;
+
+      if (getLastIncludedIndex()
+          != other.getLastIncludedIndex()) return false;
+      if (getLastIncludedTerm()
+          != other.getLastIncludedTerm()) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + LAST_INCLUDED_INDEX_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getLastIncludedIndex());
+      hash = (37 * hash) + LAST_INCLUDED_TERM_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getLastIncludedTerm());
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static proto.Raft.SnapshotMetaData parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto.Raft.SnapshotMetaData parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto.Raft.SnapshotMetaData parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto.Raft.SnapshotMetaData parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto.Raft.SnapshotMetaData parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto.Raft.SnapshotMetaData parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto.Raft.SnapshotMetaData parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto.Raft.SnapshotMetaData parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static proto.Raft.SnapshotMetaData parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static proto.Raft.SnapshotMetaData parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static proto.Raft.SnapshotMetaData parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto.Raft.SnapshotMetaData parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(proto.Raft.SnapshotMetaData prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code proto.SnapshotMetaData}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:proto.SnapshotMetaData)
+        proto.Raft.SnapshotMetaDataOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return proto.Raft.internal_static_proto_SnapshotMetaData_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return proto.Raft.internal_static_proto_SnapshotMetaData_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                proto.Raft.SnapshotMetaData.class, proto.Raft.SnapshotMetaData.Builder.class);
+      }
+
+      // Construct using proto.Raft.SnapshotMetaData.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        lastIncludedIndex_ = 0L;
+
+        lastIncludedTerm_ = 0L;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return proto.Raft.internal_static_proto_SnapshotMetaData_descriptor;
+      }
+
+      @java.lang.Override
+      public proto.Raft.SnapshotMetaData getDefaultInstanceForType() {
+        return proto.Raft.SnapshotMetaData.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public proto.Raft.SnapshotMetaData build() {
+        proto.Raft.SnapshotMetaData result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public proto.Raft.SnapshotMetaData buildPartial() {
+        proto.Raft.SnapshotMetaData result = new proto.Raft.SnapshotMetaData(this);
+        result.lastIncludedIndex_ = lastIncludedIndex_;
+        result.lastIncludedTerm_ = lastIncludedTerm_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof proto.Raft.SnapshotMetaData) {
+          return mergeFrom((proto.Raft.SnapshotMetaData)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(proto.Raft.SnapshotMetaData other) {
+        if (other == proto.Raft.SnapshotMetaData.getDefaultInstance()) return this;
+        if (other.getLastIncludedIndex() != 0L) {
+          setLastIncludedIndex(other.getLastIncludedIndex());
+        }
+        if (other.getLastIncludedTerm() != 0L) {
+          setLastIncludedTerm(other.getLastIncludedTerm());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        proto.Raft.SnapshotMetaData parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (proto.Raft.SnapshotMetaData) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private long lastIncludedIndex_ ;
+      /**
+       * <code>uint64 last_included_index = 1;</code>
+       */
+      public long getLastIncludedIndex() {
+        return lastIncludedIndex_;
+      }
+      /**
+       * <code>uint64 last_included_index = 1;</code>
+       */
+      public Builder setLastIncludedIndex(long value) {
+        
+        lastIncludedIndex_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint64 last_included_index = 1;</code>
+       */
+      public Builder clearLastIncludedIndex() {
+        
+        lastIncludedIndex_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long lastIncludedTerm_ ;
+      /**
+       * <code>uint64 last_included_term = 2;</code>
+       */
+      public long getLastIncludedTerm() {
+        return lastIncludedTerm_;
+      }
+      /**
+       * <code>uint64 last_included_term = 2;</code>
+       */
+      public Builder setLastIncludedTerm(long value) {
+        
+        lastIncludedTerm_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint64 last_included_term = 2;</code>
+       */
+      public Builder clearLastIncludedTerm() {
+        
+        lastIncludedTerm_ = 0L;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:proto.SnapshotMetaData)
+    }
+
+    // @@protoc_insertion_point(class_scope:proto.SnapshotMetaData)
+    private static final proto.Raft.SnapshotMetaData DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new proto.Raft.SnapshotMetaData();
+    }
+
+    public static proto.Raft.SnapshotMetaData getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SnapshotMetaData>
+        PARSER = new com.google.protobuf.AbstractParser<SnapshotMetaData>() {
+      @java.lang.Override
+      public SnapshotMetaData parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SnapshotMetaData(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<SnapshotMetaData> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SnapshotMetaData> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public proto.Raft.SnapshotMetaData getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -5593,11 +8196,6 @@ public final class Raft {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_proto_VoteResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_proto_LogEntry_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_proto_LogEntry_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_proto_AppendEntriesRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -5608,10 +8206,30 @@ public final class Raft {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_proto_AppendEntriesResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_proto_HyperCubeConfig_descriptor;
+    internal_static_proto_LogEntry_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_proto_HyperCubeConfig_fieldAccessorTable;
+      internal_static_proto_LogEntry_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_proto_InstallSnapshotRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_proto_InstallSnapshotRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_proto_InstallSnapshotResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_proto_InstallSnapshotResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_proto_LogMetaData_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_proto_LogMetaData_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_proto_SnapshotMetaData_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_proto_SnapshotMetaData_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -5621,32 +8239,45 @@ public final class Raft {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\020proto/raft.proto\022\005proto\032\025proto/hyperCu" +
-      "be.proto\":\n\004Node\022\021\n\tserver_id\030\001 \001(\t\022\021\n\ts" +
-      "erver_ip\030\002 \001(\t\022\014\n\004port\030\003 \001(\r\"g\n\013VoteRequ" +
-      "est\022\033\n\006sender\030\001 \001(\0132\013.proto.Node\022\014\n\004term" +
-      "\030\002 \001(\004\022\025\n\rlast_log_term\030\003 \001(\004\022\026\n\016last_lo" +
-      "g_index\030\004 \001(\004\"1\n\014VoteResponse\022\014\n\004term\030\001 " +
-      "\001(\004\022\023\n\013VoteGranted\030\002 \001(\010\"5\n\010LogEntry\022\014\n\004" +
-      "term\030\001 \001(\004\022\r\n\005index\030\002 \001(\004\022\014\n\004data\030\003 \001(\014\"" +
-      "\250\001\n\024AppendEntriesRequest\022\033\n\006sender\030\001 \001(\013" +
-      "2\013.proto.Node\022\014\n\004term\030\002 \001(\004\022\026\n\016prev_log_" +
-      "index\030\003 \001(\004\022\025\n\rprev_log_term\030\004 \001(\004\022 \n\007en" +
-      "tries\030\005 \003(\0132\017.proto.LogEntry\022\024\n\014commit_i" +
-      "ndex\030\006 \001(\004\"_\n\025AppendEntriesResponse\022 \n\010r" +
-      "es_code\030\001 \001(\0162\016.proto.ResCode\022\014\n\004term\030\002 " +
-      "\001(\004\022\026\n\016last_log_index\030\003 \001(\004\"G\n\017HyperCube" +
-      "Config\022\031\n\004node\030\001 \001(\0132\013.proto.Node\022\031\n\004pee" +
-      "r\030\002 \003(\0132\013.proto.Node2\232\001\n\013RaftService\022;\n\014" +
-      "RequestVotes\022\022.proto.VoteRequest\032\023.proto" +
-      ".VoteResponse\"\000(\001\022N\n\rAppendEntries\022\033.pro" +
-      "to.AppendEntriesRequest\032\034.proto.AppendEn" +
-      "triesResponse\"\000(\001b\006proto3"
+      "\n\020proto/raft.proto\022\005proto\032\020proto/util.pr" +
+      "oto\":\n\004Node\022\021\n\tserver_id\030\001 \001(\t\022\021\n\tserver" +
+      "_ip\030\002 \001(\t\022\014\n\004port\030\003 \001(\r\"g\n\013VoteRequest\022\033" +
+      "\n\006sender\030\001 \001(\0132\013.proto.Node\022\014\n\004term\030\002 \001(" +
+      "\004\022\025\n\rlast_log_term\030\003 \001(\004\022\026\n\016last_log_ind" +
+      "ex\030\004 \001(\004\"1\n\014VoteResponse\022\014\n\004term\030\001 \001(\004\022\023" +
+      "\n\013VoteGranted\030\002 \001(\010\"\250\001\n\024AppendEntriesReq" +
+      "uest\022\033\n\006sender\030\001 \001(\0132\013.proto.Node\022\014\n\004ter" +
+      "m\030\002 \001(\004\022\026\n\016prev_log_index\030\003 \001(\004\022\025\n\rprev_" +
+      "log_term\030\004 \001(\004\022 \n\007entries\030\005 \003(\0132\017.proto." +
+      "LogEntry\022\024\n\014commit_index\030\006 \001(\004\"\237\001\n\025Appen" +
+      "dEntriesResponse\022\021\n\tserver_id\030\001 \001(\t\022\014\n\004t" +
+      "erm\030\002 \001(\004\022\026\n\016prev_log_index\030\003 \001(\004\022\025\n\rpre" +
+      "v_log_term\030\004 \001(\004\022 \n\007entries\030\005 \003(\0132\017.prot" +
+      "o.LogEntry\022\024\n\014commit_index\030\006 \001(\004\"U\n\010LogE" +
+      "ntry\022\014\n\004term\030\001 \001(\004\022\r\n\005index\030\002 \001(\004\022\036\n\004typ" +
+      "e\030\003 \001(\0162\020.proto.EntryType\022\014\n\004data\030\004 \001(\014\"" +
+      "\302\001\n\026InstallSnapshotRequest\022\021\n\tserver_id\030" +
+      "\001 \001(\r\022\014\n\004term\030\002 \001(\004\0223\n\022snapshot_meta_dat" +
+      "a\030\003 \001(\0132\027.proto.SnapshotMetaData\022\021\n\tfile" +
+      "_name\030\004 \001(\t\022\016\n\006offset\030\005 \001(\004\022\014\n\004data\030\006 \001(" +
+      "\014\022\020\n\010is_first\030\007 \001(\010\022\017\n\007is_last\030\010 \001(\010\"I\n\027" +
+      "InstallSnapshotResponse\022 \n\010res_code\030\001 \001(" +
+      "\0162\016.proto.ResCode\022\014\n\004term\030\002 \001(\004\"O\n\013LogMe" +
+      "taData\022\024\n\014current_term\030\001 \001(\004\022\021\n\tvoted_fo" +
+      "r\030\002 \001(\r\022\027\n\017first_log_index\030\003 \001(\004\"K\n\020Snap" +
+      "shotMetaData\022\033\n\023last_included_index\030\001 \001(" +
+      "\004\022\032\n\022last_included_term\030\002 \001(\004*>\n\tEntryTy" +
+      "pe\022\023\n\017ENTRY_TYPE_DATA\020\000\022\034\n\030ENTRY_TYPE_CO" +
+      "NFIGURATION\020\0012\226\001\n\013RaftService\0229\n\014Request" +
+      "Votes\022\022.proto.VoteRequest\032\023.proto.VoteRe" +
+      "sponse\"\000\022L\n\rAppendEntries\022\033.proto.Append" +
+      "EntriesRequest\032\034.proto.AppendEntriesResp" +
+      "onse\"\000b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          proto.HyperCube.getDescriptor(),
+          proto.Util.getDescriptor(),
         });
     internal_static_proto_Node_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -5666,31 +8297,49 @@ public final class Raft {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_VoteResponse_descriptor,
         new java.lang.String[] { "Term", "VoteGranted", });
-    internal_static_proto_LogEntry_descriptor =
-      getDescriptor().getMessageTypes().get(3);
-    internal_static_proto_LogEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_proto_LogEntry_descriptor,
-        new java.lang.String[] { "Term", "Index", "Data", });
     internal_static_proto_AppendEntriesRequest_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(3);
     internal_static_proto_AppendEntriesRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_AppendEntriesRequest_descriptor,
         new java.lang.String[] { "Sender", "Term", "PrevLogIndex", "PrevLogTerm", "Entries", "CommitIndex", });
     internal_static_proto_AppendEntriesResponse_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_proto_AppendEntriesResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_AppendEntriesResponse_descriptor,
-        new java.lang.String[] { "ResCode", "Term", "LastLogIndex", });
-    internal_static_proto_HyperCubeConfig_descriptor =
-      getDescriptor().getMessageTypes().get(6);
-    internal_static_proto_HyperCubeConfig_fieldAccessorTable = new
+        new java.lang.String[] { "ServerId", "Term", "PrevLogIndex", "PrevLogTerm", "Entries", "CommitIndex", });
+    internal_static_proto_LogEntry_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_proto_LogEntry_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_proto_HyperCubeConfig_descriptor,
-        new java.lang.String[] { "Node", "Peer", });
-    proto.HyperCube.getDescriptor();
+        internal_static_proto_LogEntry_descriptor,
+        new java.lang.String[] { "Term", "Index", "Type", "Data", });
+    internal_static_proto_InstallSnapshotRequest_descriptor =
+      getDescriptor().getMessageTypes().get(6);
+    internal_static_proto_InstallSnapshotRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_proto_InstallSnapshotRequest_descriptor,
+        new java.lang.String[] { "ServerId", "Term", "SnapshotMetaData", "FileName", "Offset", "Data", "IsFirst", "IsLast", });
+    internal_static_proto_InstallSnapshotResponse_descriptor =
+      getDescriptor().getMessageTypes().get(7);
+    internal_static_proto_InstallSnapshotResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_proto_InstallSnapshotResponse_descriptor,
+        new java.lang.String[] { "ResCode", "Term", });
+    internal_static_proto_LogMetaData_descriptor =
+      getDescriptor().getMessageTypes().get(8);
+    internal_static_proto_LogMetaData_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_proto_LogMetaData_descriptor,
+        new java.lang.String[] { "CurrentTerm", "VotedFor", "FirstLogIndex", });
+    internal_static_proto_SnapshotMetaData_descriptor =
+      getDescriptor().getMessageTypes().get(9);
+    internal_static_proto_SnapshotMetaData_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_proto_SnapshotMetaData_descriptor,
+        new java.lang.String[] { "LastIncludedIndex", "LastIncludedTerm", });
+    proto.Util.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -15,5 +15,12 @@
       "server_ip": "127.0.0.1",
       "port": 1996
     }
-  ]
-},
+  ],
+
+  "options": {
+    "max_cube_file_size": 1073741824,
+    "cube_dir": "cube2"
+  }
+
+
+}

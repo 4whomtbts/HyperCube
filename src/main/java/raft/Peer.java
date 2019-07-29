@@ -2,18 +2,10 @@ package raft;
 
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
-import io.grpc.StatusRuntimeException;
-import io.grpc.stub.StreamObserver;
 import proto.Raft;
 import proto.RaftServiceGrpc;
 
-import java.io.IOException;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.Stream;
-
-import static util.universalUtil.buildSender;
 
 public class Peer {
 
@@ -84,7 +76,6 @@ public class Peer {
 
     public Raft.VoteResponse requestVote(Raft.Node sender) {
 
-        // System.out.println("리퀘스트 보트 : "+this.server.nextTerm());
         final Raft.VoteRequest req = Raft.VoteRequest.newBuilder()
                 .setSender(sender)
                 .setTerm(this.server.getTerm() + 1)

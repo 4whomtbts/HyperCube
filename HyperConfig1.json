@@ -19,7 +19,7 @@
 
     "raft_options" : {
       "max_cube_file_size": 1073741824,
-      "cube_dir": "cube1"
+      "cube_path": "cube"
     }
 
 }

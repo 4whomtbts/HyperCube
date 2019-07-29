@@ -1,17 +1,24 @@
 syntax="proto3";
 package proto;
+import "proto/raft.proto";
+import "proto/util.proto";
 
-enum ResCode {
-    SUCCESS = 0;
-    FAIL = 1;
-    WARNING = 2;
-}
-
-message ResMessage {
-    string msg = 1;
-}
 
 message HyperResponse {
     ResCode resCode = 1;
     ResMessage msg = 2;
+}
+
+
+message Config {
+    Node node = 1;
+    repeated Node peer =2;
+    RaftOptions raft_options = 3;
+
+}
+
+message RaftOptions {
+    uint64 max_cube_file_size = 1;
+    string cube_dir = 2;
+
 }

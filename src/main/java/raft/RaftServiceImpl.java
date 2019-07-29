@@ -54,6 +54,11 @@ public class RaftServiceImpl extends RaftServiceGrpc.RaftServiceImplBase {
         this.server.resetHeartBeatTimer();
         this.server.setLeaderId(req.getSender().getServerId());
         this.server.beFollower();
+
+        if(req.getEntriesCount() != 0){
+
+
+        }
         System.out.println(this.server.getServerId()+" 가 "+req.getSender().getServerId()+" 에게 하트비트 받음");
         Raft.AppendEntriesResponse res = Raft.AppendEntriesResponse.newBuilder().build();
         resObserver.onNext(res);

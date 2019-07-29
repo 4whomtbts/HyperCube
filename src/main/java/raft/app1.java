@@ -1,23 +1,21 @@
 package raft;
 
-import com.sun.org.omg.CORBA.ExcDescriptionSeqHelper;
-import proto.Raft;
-import util.universalUtil;
+import proto.HyperCube;
+import util.Config;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 
 public class app1 {
     public static URL getDefaultFeaturesFiles(int index){
-        String configName = "HyperConfig"+index+".json";
+        String configName = "HyperConfig.proto"+index+".json";
         System.out.println("Config File Name : "+configName);
         try {
-            return new File("D:\\desktop\\naver_d2_fest\\hyper_cube\\src\\main\\resources\\HyperConfig"+index+".json").toURI()
+            return new File("D:\\desktop\\naver_d2_fest\\hyper_cube\\src\\main\\resources\\HyperConfig.proto"+index+".json").toURI()
                     .toURL();
         }catch (Exception e){
             return null;
@@ -27,14 +25,11 @@ public class app1 {
 
     public static void main(String[] args ) throws IOException {
 
-        Raft.HyperCubeConfig c1 = universalUtil.parseConfig(
-                getDefaultFeaturesFiles(1)
+        HyperCube.Config c1 = Config.parseConfig("HyperConfig1.json"
         );
-        Raft.HyperCubeConfig c2 = universalUtil.parseConfig(
-                getDefaultFeaturesFiles(2)
+        HyperCube.Config c2 = Config.parseConfig("HyperConfig2.json"
         );
-        Raft.HyperCubeConfig c3 = universalUtil.parseConfig(
-                getDefaultFeaturesFiles(3)
+        HyperCube.Config c3 = Config.parseConfig("HyperConfig3.json"
         );
 
         String localHost = "127.0.0.1";
@@ -61,7 +56,7 @@ public class app1 {
         s1.init();s2.init();s3.init();
         try {
             peerS1.shutdown();
-            
+
             peerS2.shutdown();
             peerS3.shutdown();
 

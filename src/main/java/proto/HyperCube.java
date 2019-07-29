@@ -14,668 +14,6 @@ public final class HyperCube {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  /**
-   * Protobuf enum {@code proto.ResCode}
-   */
-  public enum ResCode
-      implements com.google.protobuf.ProtocolMessageEnum {
-    /**
-     * <code>SUCCESS = 0;</code>
-     */
-    SUCCESS(0),
-    /**
-     * <code>FAIL = 1;</code>
-     */
-    FAIL(1),
-    /**
-     * <code>WARNING = 2;</code>
-     */
-    WARNING(2),
-    UNRECOGNIZED(-1),
-    ;
-
-    /**
-     * <code>SUCCESS = 0;</code>
-     */
-    public static final int SUCCESS_VALUE = 0;
-    /**
-     * <code>FAIL = 1;</code>
-     */
-    public static final int FAIL_VALUE = 1;
-    /**
-     * <code>WARNING = 2;</code>
-     */
-    public static final int WARNING_VALUE = 2;
-
-
-    public final int getNumber() {
-      if (this == UNRECOGNIZED) {
-        throw new java.lang.IllegalArgumentException(
-            "Can't get the number of an unknown enum value.");
-      }
-      return value;
-    }
-
-    /**
-     * @deprecated Use {@link #forNumber(int)} instead.
-     */
-    @java.lang.Deprecated
-    public static ResCode valueOf(int value) {
-      return forNumber(value);
-    }
-
-    public static ResCode forNumber(int value) {
-      switch (value) {
-        case 0: return SUCCESS;
-        case 1: return FAIL;
-        case 2: return WARNING;
-        default: return null;
-      }
-    }
-
-    public static com.google.protobuf.Internal.EnumLiteMap<ResCode>
-        internalGetValueMap() {
-      return internalValueMap;
-    }
-    private static final com.google.protobuf.Internal.EnumLiteMap<
-        ResCode> internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<ResCode>() {
-            public ResCode findValueByNumber(int number) {
-              return ResCode.forNumber(number);
-            }
-          };
-
-    public final com.google.protobuf.Descriptors.EnumValueDescriptor
-        getValueDescriptor() {
-      return getDescriptor().getValues().get(ordinal());
-    }
-    public final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptorForType() {
-      return getDescriptor();
-    }
-    public static final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptor() {
-      return proto.HyperCube.getDescriptor().getEnumTypes().get(0);
-    }
-
-    private static final ResCode[] VALUES = values();
-
-    public static ResCode valueOf(
-        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-      if (desc.getType() != getDescriptor()) {
-        throw new java.lang.IllegalArgumentException(
-          "EnumValueDescriptor is not for this type.");
-      }
-      if (desc.getIndex() == -1) {
-        return UNRECOGNIZED;
-      }
-      return VALUES[desc.getIndex()];
-    }
-
-    private final int value;
-
-    private ResCode(int value) {
-      this.value = value;
-    }
-
-    // @@protoc_insertion_point(enum_scope:proto.ResCode)
-  }
-
-  public interface ResMessageOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:proto.ResMessage)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>string msg = 1;</code>
-     */
-    java.lang.String getMsg();
-    /**
-     * <code>string msg = 1;</code>
-     */
-    com.google.protobuf.ByteString
-        getMsgBytes();
-  }
-  /**
-   * Protobuf type {@code proto.ResMessage}
-   */
-  public  static final class ResMessage extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:proto.ResMessage)
-      ResMessageOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use ResMessage.newBuilder() to construct.
-    private ResMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private ResMessage() {
-      msg_ = "";
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new ResMessage();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private ResMessage(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              msg_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return proto.HyperCube.internal_static_proto_ResMessage_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return proto.HyperCube.internal_static_proto_ResMessage_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              proto.HyperCube.ResMessage.class, proto.HyperCube.ResMessage.Builder.class);
-    }
-
-    public static final int MSG_FIELD_NUMBER = 1;
-    private volatile java.lang.Object msg_;
-    /**
-     * <code>string msg = 1;</code>
-     */
-    public java.lang.String getMsg() {
-      java.lang.Object ref = msg_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        msg_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string msg = 1;</code>
-     */
-    public com.google.protobuf.ByteString
-        getMsgBytes() {
-      java.lang.Object ref = msg_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        msg_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (!getMsgBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, msg_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (!getMsgBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, msg_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof proto.HyperCube.ResMessage)) {
-        return super.equals(obj);
-      }
-      proto.HyperCube.ResMessage other = (proto.HyperCube.ResMessage) obj;
-
-      if (!getMsg()
-          .equals(other.getMsg())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + MSG_FIELD_NUMBER;
-      hash = (53 * hash) + getMsg().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static proto.HyperCube.ResMessage parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static proto.HyperCube.ResMessage parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static proto.HyperCube.ResMessage parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static proto.HyperCube.ResMessage parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static proto.HyperCube.ResMessage parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static proto.HyperCube.ResMessage parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static proto.HyperCube.ResMessage parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static proto.HyperCube.ResMessage parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static proto.HyperCube.ResMessage parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static proto.HyperCube.ResMessage parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static proto.HyperCube.ResMessage parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static proto.HyperCube.ResMessage parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(proto.HyperCube.ResMessage prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code proto.ResMessage}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:proto.ResMessage)
-        proto.HyperCube.ResMessageOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return proto.HyperCube.internal_static_proto_ResMessage_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return proto.HyperCube.internal_static_proto_ResMessage_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                proto.HyperCube.ResMessage.class, proto.HyperCube.ResMessage.Builder.class);
-      }
-
-      // Construct using proto.HyperCube.ResMessage.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        msg_ = "";
-
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return proto.HyperCube.internal_static_proto_ResMessage_descriptor;
-      }
-
-      @java.lang.Override
-      public proto.HyperCube.ResMessage getDefaultInstanceForType() {
-        return proto.HyperCube.ResMessage.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public proto.HyperCube.ResMessage build() {
-        proto.HyperCube.ResMessage result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public proto.HyperCube.ResMessage buildPartial() {
-        proto.HyperCube.ResMessage result = new proto.HyperCube.ResMessage(this);
-        result.msg_ = msg_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof proto.HyperCube.ResMessage) {
-          return mergeFrom((proto.HyperCube.ResMessage)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(proto.HyperCube.ResMessage other) {
-        if (other == proto.HyperCube.ResMessage.getDefaultInstance()) return this;
-        if (!other.getMsg().isEmpty()) {
-          msg_ = other.msg_;
-          onChanged();
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        proto.HyperCube.ResMessage parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (proto.HyperCube.ResMessage) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private java.lang.Object msg_ = "";
-      /**
-       * <code>string msg = 1;</code>
-       */
-      public java.lang.String getMsg() {
-        java.lang.Object ref = msg_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          msg_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string msg = 1;</code>
-       */
-      public com.google.protobuf.ByteString
-          getMsgBytes() {
-        java.lang.Object ref = msg_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          msg_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string msg = 1;</code>
-       */
-      public Builder setMsg(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        msg_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string msg = 1;</code>
-       */
-      public Builder clearMsg() {
-        
-        msg_ = getDefaultInstance().getMsg();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string msg = 1;</code>
-       */
-      public Builder setMsgBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        msg_ = value;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:proto.ResMessage)
-    }
-
-    // @@protoc_insertion_point(class_scope:proto.ResMessage)
-    private static final proto.HyperCube.ResMessage DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new proto.HyperCube.ResMessage();
-    }
-
-    public static proto.HyperCube.ResMessage getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<ResMessage>
-        PARSER = new com.google.protobuf.AbstractParser<ResMessage>() {
-      @java.lang.Override
-      public ResMessage parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ResMessage(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<ResMessage> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<ResMessage> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public proto.HyperCube.ResMessage getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
   public interface HyperResponseOrBuilder extends
       // @@protoc_insertion_point(interface_extends:proto.HyperResponse)
       com.google.protobuf.MessageOrBuilder {
@@ -687,7 +25,7 @@ public final class HyperCube {
     /**
      * <code>.proto.ResCode resCode = 1;</code>
      */
-    proto.HyperCube.ResCode getResCode();
+    proto.Util.ResCode getResCode();
 
     /**
      * <code>.proto.ResMessage msg = 2;</code>
@@ -696,11 +34,11 @@ public final class HyperCube {
     /**
      * <code>.proto.ResMessage msg = 2;</code>
      */
-    proto.HyperCube.ResMessage getMsg();
+    proto.Util.ResMessage getMsg();
     /**
      * <code>.proto.ResMessage msg = 2;</code>
      */
-    proto.HyperCube.ResMessageOrBuilder getMsgOrBuilder();
+    proto.Util.ResMessageOrBuilder getMsgOrBuilder();
   }
   /**
    * Protobuf type {@code proto.HyperResponse}
@@ -755,11 +93,11 @@ public final class HyperCube {
               break;
             }
             case 18: {
-              proto.HyperCube.ResMessage.Builder subBuilder = null;
+              proto.Util.ResMessage.Builder subBuilder = null;
               if (msg_ != null) {
                 subBuilder = msg_.toBuilder();
               }
-              msg_ = input.readMessage(proto.HyperCube.ResMessage.parser(), extensionRegistry);
+              msg_ = input.readMessage(proto.Util.ResMessage.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(msg_);
                 msg_ = subBuilder.buildPartial();
@@ -810,14 +148,14 @@ public final class HyperCube {
     /**
      * <code>.proto.ResCode resCode = 1;</code>
      */
-    public proto.HyperCube.ResCode getResCode() {
+    public proto.Util.ResCode getResCode() {
       @SuppressWarnings("deprecation")
-      proto.HyperCube.ResCode result = proto.HyperCube.ResCode.valueOf(resCode_);
-      return result == null ? proto.HyperCube.ResCode.UNRECOGNIZED : result;
+      proto.Util.ResCode result = proto.Util.ResCode.valueOf(resCode_);
+      return result == null ? proto.Util.ResCode.UNRECOGNIZED : result;
     }
 
     public static final int MSG_FIELD_NUMBER = 2;
-    private proto.HyperCube.ResMessage msg_;
+    private proto.Util.ResMessage msg_;
     /**
      * <code>.proto.ResMessage msg = 2;</code>
      */
@@ -827,13 +165,13 @@ public final class HyperCube {
     /**
      * <code>.proto.ResMessage msg = 2;</code>
      */
-    public proto.HyperCube.ResMessage getMsg() {
-      return msg_ == null ? proto.HyperCube.ResMessage.getDefaultInstance() : msg_;
+    public proto.Util.ResMessage getMsg() {
+      return msg_ == null ? proto.Util.ResMessage.getDefaultInstance() : msg_;
     }
     /**
      * <code>.proto.ResMessage msg = 2;</code>
      */
-    public proto.HyperCube.ResMessageOrBuilder getMsgOrBuilder() {
+    public proto.Util.ResMessageOrBuilder getMsgOrBuilder() {
       return getMsg();
     }
 
@@ -851,7 +189,7 @@ public final class HyperCube {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (resCode_ != proto.HyperCube.ResCode.SUCCESS.getNumber()) {
+      if (resCode_ != proto.Util.ResCode.SUCCESS.getNumber()) {
         output.writeEnum(1, resCode_);
       }
       if (msg_ != null) {
@@ -866,7 +204,7 @@ public final class HyperCube {
       if (size != -1) return size;
 
       size = 0;
-      if (resCode_ != proto.HyperCube.ResCode.SUCCESS.getNumber()) {
+      if (resCode_ != proto.Util.ResCode.SUCCESS.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(1, resCode_);
       }
@@ -1186,15 +524,15 @@ public final class HyperCube {
       /**
        * <code>.proto.ResCode resCode = 1;</code>
        */
-      public proto.HyperCube.ResCode getResCode() {
+      public proto.Util.ResCode getResCode() {
         @SuppressWarnings("deprecation")
-        proto.HyperCube.ResCode result = proto.HyperCube.ResCode.valueOf(resCode_);
-        return result == null ? proto.HyperCube.ResCode.UNRECOGNIZED : result;
+        proto.Util.ResCode result = proto.Util.ResCode.valueOf(resCode_);
+        return result == null ? proto.Util.ResCode.UNRECOGNIZED : result;
       }
       /**
        * <code>.proto.ResCode resCode = 1;</code>
        */
-      public Builder setResCode(proto.HyperCube.ResCode value) {
+      public Builder setResCode(proto.Util.ResCode value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -1213,9 +551,9 @@ public final class HyperCube {
         return this;
       }
 
-      private proto.HyperCube.ResMessage msg_;
+      private proto.Util.ResMessage msg_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          proto.HyperCube.ResMessage, proto.HyperCube.ResMessage.Builder, proto.HyperCube.ResMessageOrBuilder> msgBuilder_;
+          proto.Util.ResMessage, proto.Util.ResMessage.Builder, proto.Util.ResMessageOrBuilder> msgBuilder_;
       /**
        * <code>.proto.ResMessage msg = 2;</code>
        */
@@ -1225,9 +563,9 @@ public final class HyperCube {
       /**
        * <code>.proto.ResMessage msg = 2;</code>
        */
-      public proto.HyperCube.ResMessage getMsg() {
+      public proto.Util.ResMessage getMsg() {
         if (msgBuilder_ == null) {
-          return msg_ == null ? proto.HyperCube.ResMessage.getDefaultInstance() : msg_;
+          return msg_ == null ? proto.Util.ResMessage.getDefaultInstance() : msg_;
         } else {
           return msgBuilder_.getMessage();
         }
@@ -1235,7 +573,7 @@ public final class HyperCube {
       /**
        * <code>.proto.ResMessage msg = 2;</code>
        */
-      public Builder setMsg(proto.HyperCube.ResMessage value) {
+      public Builder setMsg(proto.Util.ResMessage value) {
         if (msgBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -1252,7 +590,7 @@ public final class HyperCube {
        * <code>.proto.ResMessage msg = 2;</code>
        */
       public Builder setMsg(
-          proto.HyperCube.ResMessage.Builder builderForValue) {
+          proto.Util.ResMessage.Builder builderForValue) {
         if (msgBuilder_ == null) {
           msg_ = builderForValue.build();
           onChanged();
@@ -1265,11 +603,11 @@ public final class HyperCube {
       /**
        * <code>.proto.ResMessage msg = 2;</code>
        */
-      public Builder mergeMsg(proto.HyperCube.ResMessage value) {
+      public Builder mergeMsg(proto.Util.ResMessage value) {
         if (msgBuilder_ == null) {
           if (msg_ != null) {
             msg_ =
-              proto.HyperCube.ResMessage.newBuilder(msg_).mergeFrom(value).buildPartial();
+              proto.Util.ResMessage.newBuilder(msg_).mergeFrom(value).buildPartial();
           } else {
             msg_ = value;
           }
@@ -1297,7 +635,7 @@ public final class HyperCube {
       /**
        * <code>.proto.ResMessage msg = 2;</code>
        */
-      public proto.HyperCube.ResMessage.Builder getMsgBuilder() {
+      public proto.Util.ResMessage.Builder getMsgBuilder() {
         
         onChanged();
         return getMsgFieldBuilder().getBuilder();
@@ -1305,23 +643,23 @@ public final class HyperCube {
       /**
        * <code>.proto.ResMessage msg = 2;</code>
        */
-      public proto.HyperCube.ResMessageOrBuilder getMsgOrBuilder() {
+      public proto.Util.ResMessageOrBuilder getMsgOrBuilder() {
         if (msgBuilder_ != null) {
           return msgBuilder_.getMessageOrBuilder();
         } else {
           return msg_ == null ?
-              proto.HyperCube.ResMessage.getDefaultInstance() : msg_;
+              proto.Util.ResMessage.getDefaultInstance() : msg_;
         }
       }
       /**
        * <code>.proto.ResMessage msg = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          proto.HyperCube.ResMessage, proto.HyperCube.ResMessage.Builder, proto.HyperCube.ResMessageOrBuilder> 
+          proto.Util.ResMessage, proto.Util.ResMessage.Builder, proto.Util.ResMessageOrBuilder> 
           getMsgFieldBuilder() {
         if (msgBuilder_ == null) {
           msgBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              proto.HyperCube.ResMessage, proto.HyperCube.ResMessage.Builder, proto.HyperCube.ResMessageOrBuilder>(
+              proto.Util.ResMessage, proto.Util.ResMessage.Builder, proto.Util.ResMessageOrBuilder>(
                   getMsg(),
                   getParentForChildren(),
                   isClean());
@@ -1382,16 +720,1815 @@ public final class HyperCube {
 
   }
 
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_proto_ResMessage_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_proto_ResMessage_fieldAccessorTable;
+  public interface ConfigOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:proto.Config)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.proto.Node node = 1;</code>
+     */
+    boolean hasNode();
+    /**
+     * <code>.proto.Node node = 1;</code>
+     */
+    proto.Raft.Node getNode();
+    /**
+     * <code>.proto.Node node = 1;</code>
+     */
+    proto.Raft.NodeOrBuilder getNodeOrBuilder();
+
+    /**
+     * <code>repeated .proto.Node peer = 2;</code>
+     */
+    java.util.List<proto.Raft.Node> 
+        getPeerList();
+    /**
+     * <code>repeated .proto.Node peer = 2;</code>
+     */
+    proto.Raft.Node getPeer(int index);
+    /**
+     * <code>repeated .proto.Node peer = 2;</code>
+     */
+    int getPeerCount();
+    /**
+     * <code>repeated .proto.Node peer = 2;</code>
+     */
+    java.util.List<? extends proto.Raft.NodeOrBuilder> 
+        getPeerOrBuilderList();
+    /**
+     * <code>repeated .proto.Node peer = 2;</code>
+     */
+    proto.Raft.NodeOrBuilder getPeerOrBuilder(
+        int index);
+
+    /**
+     * <code>.proto.RaftOptions raft_options = 3;</code>
+     */
+    boolean hasRaftOptions();
+    /**
+     * <code>.proto.RaftOptions raft_options = 3;</code>
+     */
+    proto.HyperCube.RaftOptions getRaftOptions();
+    /**
+     * <code>.proto.RaftOptions raft_options = 3;</code>
+     */
+    proto.HyperCube.RaftOptionsOrBuilder getRaftOptionsOrBuilder();
+  }
+  /**
+   * Protobuf type {@code proto.Config}
+   */
+  public  static final class Config extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:proto.Config)
+      ConfigOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use Config.newBuilder() to construct.
+    private Config(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private Config() {
+      peer_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new Config();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Config(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              proto.Raft.Node.Builder subBuilder = null;
+              if (node_ != null) {
+                subBuilder = node_.toBuilder();
+              }
+              node_ = input.readMessage(proto.Raft.Node.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(node_);
+                node_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                peer_ = new java.util.ArrayList<proto.Raft.Node>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              peer_.add(
+                  input.readMessage(proto.Raft.Node.parser(), extensionRegistry));
+              break;
+            }
+            case 26: {
+              proto.HyperCube.RaftOptions.Builder subBuilder = null;
+              if (raftOptions_ != null) {
+                subBuilder = raftOptions_.toBuilder();
+              }
+              raftOptions_ = input.readMessage(proto.HyperCube.RaftOptions.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(raftOptions_);
+                raftOptions_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          peer_ = java.util.Collections.unmodifiableList(peer_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return proto.HyperCube.internal_static_proto_Config_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return proto.HyperCube.internal_static_proto_Config_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              proto.HyperCube.Config.class, proto.HyperCube.Config.Builder.class);
+    }
+
+    public static final int NODE_FIELD_NUMBER = 1;
+    private proto.Raft.Node node_;
+    /**
+     * <code>.proto.Node node = 1;</code>
+     */
+    public boolean hasNode() {
+      return node_ != null;
+    }
+    /**
+     * <code>.proto.Node node = 1;</code>
+     */
+    public proto.Raft.Node getNode() {
+      return node_ == null ? proto.Raft.Node.getDefaultInstance() : node_;
+    }
+    /**
+     * <code>.proto.Node node = 1;</code>
+     */
+    public proto.Raft.NodeOrBuilder getNodeOrBuilder() {
+      return getNode();
+    }
+
+    public static final int PEER_FIELD_NUMBER = 2;
+    private java.util.List<proto.Raft.Node> peer_;
+    /**
+     * <code>repeated .proto.Node peer = 2;</code>
+     */
+    public java.util.List<proto.Raft.Node> getPeerList() {
+      return peer_;
+    }
+    /**
+     * <code>repeated .proto.Node peer = 2;</code>
+     */
+    public java.util.List<? extends proto.Raft.NodeOrBuilder> 
+        getPeerOrBuilderList() {
+      return peer_;
+    }
+    /**
+     * <code>repeated .proto.Node peer = 2;</code>
+     */
+    public int getPeerCount() {
+      return peer_.size();
+    }
+    /**
+     * <code>repeated .proto.Node peer = 2;</code>
+     */
+    public proto.Raft.Node getPeer(int index) {
+      return peer_.get(index);
+    }
+    /**
+     * <code>repeated .proto.Node peer = 2;</code>
+     */
+    public proto.Raft.NodeOrBuilder getPeerOrBuilder(
+        int index) {
+      return peer_.get(index);
+    }
+
+    public static final int RAFT_OPTIONS_FIELD_NUMBER = 3;
+    private proto.HyperCube.RaftOptions raftOptions_;
+    /**
+     * <code>.proto.RaftOptions raft_options = 3;</code>
+     */
+    public boolean hasRaftOptions() {
+      return raftOptions_ != null;
+    }
+    /**
+     * <code>.proto.RaftOptions raft_options = 3;</code>
+     */
+    public proto.HyperCube.RaftOptions getRaftOptions() {
+      return raftOptions_ == null ? proto.HyperCube.RaftOptions.getDefaultInstance() : raftOptions_;
+    }
+    /**
+     * <code>.proto.RaftOptions raft_options = 3;</code>
+     */
+    public proto.HyperCube.RaftOptionsOrBuilder getRaftOptionsOrBuilder() {
+      return getRaftOptions();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (node_ != null) {
+        output.writeMessage(1, getNode());
+      }
+      for (int i = 0; i < peer_.size(); i++) {
+        output.writeMessage(2, peer_.get(i));
+      }
+      if (raftOptions_ != null) {
+        output.writeMessage(3, getRaftOptions());
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (node_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getNode());
+      }
+      for (int i = 0; i < peer_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, peer_.get(i));
+      }
+      if (raftOptions_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, getRaftOptions());
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof proto.HyperCube.Config)) {
+        return super.equals(obj);
+      }
+      proto.HyperCube.Config other = (proto.HyperCube.Config) obj;
+
+      if (hasNode() != other.hasNode()) return false;
+      if (hasNode()) {
+        if (!getNode()
+            .equals(other.getNode())) return false;
+      }
+      if (!getPeerList()
+          .equals(other.getPeerList())) return false;
+      if (hasRaftOptions() != other.hasRaftOptions()) return false;
+      if (hasRaftOptions()) {
+        if (!getRaftOptions()
+            .equals(other.getRaftOptions())) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasNode()) {
+        hash = (37 * hash) + NODE_FIELD_NUMBER;
+        hash = (53 * hash) + getNode().hashCode();
+      }
+      if (getPeerCount() > 0) {
+        hash = (37 * hash) + PEER_FIELD_NUMBER;
+        hash = (53 * hash) + getPeerList().hashCode();
+      }
+      if (hasRaftOptions()) {
+        hash = (37 * hash) + RAFT_OPTIONS_FIELD_NUMBER;
+        hash = (53 * hash) + getRaftOptions().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static proto.HyperCube.Config parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto.HyperCube.Config parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto.HyperCube.Config parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto.HyperCube.Config parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto.HyperCube.Config parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto.HyperCube.Config parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto.HyperCube.Config parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto.HyperCube.Config parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static proto.HyperCube.Config parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static proto.HyperCube.Config parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static proto.HyperCube.Config parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto.HyperCube.Config parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(proto.HyperCube.Config prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code proto.Config}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:proto.Config)
+        proto.HyperCube.ConfigOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return proto.HyperCube.internal_static_proto_Config_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return proto.HyperCube.internal_static_proto_Config_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                proto.HyperCube.Config.class, proto.HyperCube.Config.Builder.class);
+      }
+
+      // Construct using proto.HyperCube.Config.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getPeerFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (nodeBuilder_ == null) {
+          node_ = null;
+        } else {
+          node_ = null;
+          nodeBuilder_ = null;
+        }
+        if (peerBuilder_ == null) {
+          peer_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          peerBuilder_.clear();
+        }
+        if (raftOptionsBuilder_ == null) {
+          raftOptions_ = null;
+        } else {
+          raftOptions_ = null;
+          raftOptionsBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return proto.HyperCube.internal_static_proto_Config_descriptor;
+      }
+
+      @java.lang.Override
+      public proto.HyperCube.Config getDefaultInstanceForType() {
+        return proto.HyperCube.Config.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public proto.HyperCube.Config build() {
+        proto.HyperCube.Config result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public proto.HyperCube.Config buildPartial() {
+        proto.HyperCube.Config result = new proto.HyperCube.Config(this);
+        int from_bitField0_ = bitField0_;
+        if (nodeBuilder_ == null) {
+          result.node_ = node_;
+        } else {
+          result.node_ = nodeBuilder_.build();
+        }
+        if (peerBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            peer_ = java.util.Collections.unmodifiableList(peer_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.peer_ = peer_;
+        } else {
+          result.peer_ = peerBuilder_.build();
+        }
+        if (raftOptionsBuilder_ == null) {
+          result.raftOptions_ = raftOptions_;
+        } else {
+          result.raftOptions_ = raftOptionsBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof proto.HyperCube.Config) {
+          return mergeFrom((proto.HyperCube.Config)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(proto.HyperCube.Config other) {
+        if (other == proto.HyperCube.Config.getDefaultInstance()) return this;
+        if (other.hasNode()) {
+          mergeNode(other.getNode());
+        }
+        if (peerBuilder_ == null) {
+          if (!other.peer_.isEmpty()) {
+            if (peer_.isEmpty()) {
+              peer_ = other.peer_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensurePeerIsMutable();
+              peer_.addAll(other.peer_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.peer_.isEmpty()) {
+            if (peerBuilder_.isEmpty()) {
+              peerBuilder_.dispose();
+              peerBuilder_ = null;
+              peer_ = other.peer_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              peerBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getPeerFieldBuilder() : null;
+            } else {
+              peerBuilder_.addAllMessages(other.peer_);
+            }
+          }
+        }
+        if (other.hasRaftOptions()) {
+          mergeRaftOptions(other.getRaftOptions());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        proto.HyperCube.Config parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (proto.HyperCube.Config) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private proto.Raft.Node node_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          proto.Raft.Node, proto.Raft.Node.Builder, proto.Raft.NodeOrBuilder> nodeBuilder_;
+      /**
+       * <code>.proto.Node node = 1;</code>
+       */
+      public boolean hasNode() {
+        return nodeBuilder_ != null || node_ != null;
+      }
+      /**
+       * <code>.proto.Node node = 1;</code>
+       */
+      public proto.Raft.Node getNode() {
+        if (nodeBuilder_ == null) {
+          return node_ == null ? proto.Raft.Node.getDefaultInstance() : node_;
+        } else {
+          return nodeBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.proto.Node node = 1;</code>
+       */
+      public Builder setNode(proto.Raft.Node value) {
+        if (nodeBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          node_ = value;
+          onChanged();
+        } else {
+          nodeBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.proto.Node node = 1;</code>
+       */
+      public Builder setNode(
+          proto.Raft.Node.Builder builderForValue) {
+        if (nodeBuilder_ == null) {
+          node_ = builderForValue.build();
+          onChanged();
+        } else {
+          nodeBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.proto.Node node = 1;</code>
+       */
+      public Builder mergeNode(proto.Raft.Node value) {
+        if (nodeBuilder_ == null) {
+          if (node_ != null) {
+            node_ =
+              proto.Raft.Node.newBuilder(node_).mergeFrom(value).buildPartial();
+          } else {
+            node_ = value;
+          }
+          onChanged();
+        } else {
+          nodeBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.proto.Node node = 1;</code>
+       */
+      public Builder clearNode() {
+        if (nodeBuilder_ == null) {
+          node_ = null;
+          onChanged();
+        } else {
+          node_ = null;
+          nodeBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.proto.Node node = 1;</code>
+       */
+      public proto.Raft.Node.Builder getNodeBuilder() {
+        
+        onChanged();
+        return getNodeFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.proto.Node node = 1;</code>
+       */
+      public proto.Raft.NodeOrBuilder getNodeOrBuilder() {
+        if (nodeBuilder_ != null) {
+          return nodeBuilder_.getMessageOrBuilder();
+        } else {
+          return node_ == null ?
+              proto.Raft.Node.getDefaultInstance() : node_;
+        }
+      }
+      /**
+       * <code>.proto.Node node = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          proto.Raft.Node, proto.Raft.Node.Builder, proto.Raft.NodeOrBuilder> 
+          getNodeFieldBuilder() {
+        if (nodeBuilder_ == null) {
+          nodeBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              proto.Raft.Node, proto.Raft.Node.Builder, proto.Raft.NodeOrBuilder>(
+                  getNode(),
+                  getParentForChildren(),
+                  isClean());
+          node_ = null;
+        }
+        return nodeBuilder_;
+      }
+
+      private java.util.List<proto.Raft.Node> peer_ =
+        java.util.Collections.emptyList();
+      private void ensurePeerIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          peer_ = new java.util.ArrayList<proto.Raft.Node>(peer_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          proto.Raft.Node, proto.Raft.Node.Builder, proto.Raft.NodeOrBuilder> peerBuilder_;
+
+      /**
+       * <code>repeated .proto.Node peer = 2;</code>
+       */
+      public java.util.List<proto.Raft.Node> getPeerList() {
+        if (peerBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(peer_);
+        } else {
+          return peerBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .proto.Node peer = 2;</code>
+       */
+      public int getPeerCount() {
+        if (peerBuilder_ == null) {
+          return peer_.size();
+        } else {
+          return peerBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .proto.Node peer = 2;</code>
+       */
+      public proto.Raft.Node getPeer(int index) {
+        if (peerBuilder_ == null) {
+          return peer_.get(index);
+        } else {
+          return peerBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .proto.Node peer = 2;</code>
+       */
+      public Builder setPeer(
+          int index, proto.Raft.Node value) {
+        if (peerBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensurePeerIsMutable();
+          peer_.set(index, value);
+          onChanged();
+        } else {
+          peerBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .proto.Node peer = 2;</code>
+       */
+      public Builder setPeer(
+          int index, proto.Raft.Node.Builder builderForValue) {
+        if (peerBuilder_ == null) {
+          ensurePeerIsMutable();
+          peer_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          peerBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .proto.Node peer = 2;</code>
+       */
+      public Builder addPeer(proto.Raft.Node value) {
+        if (peerBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensurePeerIsMutable();
+          peer_.add(value);
+          onChanged();
+        } else {
+          peerBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .proto.Node peer = 2;</code>
+       */
+      public Builder addPeer(
+          int index, proto.Raft.Node value) {
+        if (peerBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensurePeerIsMutable();
+          peer_.add(index, value);
+          onChanged();
+        } else {
+          peerBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .proto.Node peer = 2;</code>
+       */
+      public Builder addPeer(
+          proto.Raft.Node.Builder builderForValue) {
+        if (peerBuilder_ == null) {
+          ensurePeerIsMutable();
+          peer_.add(builderForValue.build());
+          onChanged();
+        } else {
+          peerBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .proto.Node peer = 2;</code>
+       */
+      public Builder addPeer(
+          int index, proto.Raft.Node.Builder builderForValue) {
+        if (peerBuilder_ == null) {
+          ensurePeerIsMutable();
+          peer_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          peerBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .proto.Node peer = 2;</code>
+       */
+      public Builder addAllPeer(
+          java.lang.Iterable<? extends proto.Raft.Node> values) {
+        if (peerBuilder_ == null) {
+          ensurePeerIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, peer_);
+          onChanged();
+        } else {
+          peerBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .proto.Node peer = 2;</code>
+       */
+      public Builder clearPeer() {
+        if (peerBuilder_ == null) {
+          peer_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          peerBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .proto.Node peer = 2;</code>
+       */
+      public Builder removePeer(int index) {
+        if (peerBuilder_ == null) {
+          ensurePeerIsMutable();
+          peer_.remove(index);
+          onChanged();
+        } else {
+          peerBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .proto.Node peer = 2;</code>
+       */
+      public proto.Raft.Node.Builder getPeerBuilder(
+          int index) {
+        return getPeerFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .proto.Node peer = 2;</code>
+       */
+      public proto.Raft.NodeOrBuilder getPeerOrBuilder(
+          int index) {
+        if (peerBuilder_ == null) {
+          return peer_.get(index);  } else {
+          return peerBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .proto.Node peer = 2;</code>
+       */
+      public java.util.List<? extends proto.Raft.NodeOrBuilder> 
+           getPeerOrBuilderList() {
+        if (peerBuilder_ != null) {
+          return peerBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(peer_);
+        }
+      }
+      /**
+       * <code>repeated .proto.Node peer = 2;</code>
+       */
+      public proto.Raft.Node.Builder addPeerBuilder() {
+        return getPeerFieldBuilder().addBuilder(
+            proto.Raft.Node.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .proto.Node peer = 2;</code>
+       */
+      public proto.Raft.Node.Builder addPeerBuilder(
+          int index) {
+        return getPeerFieldBuilder().addBuilder(
+            index, proto.Raft.Node.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .proto.Node peer = 2;</code>
+       */
+      public java.util.List<proto.Raft.Node.Builder> 
+           getPeerBuilderList() {
+        return getPeerFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          proto.Raft.Node, proto.Raft.Node.Builder, proto.Raft.NodeOrBuilder> 
+          getPeerFieldBuilder() {
+        if (peerBuilder_ == null) {
+          peerBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              proto.Raft.Node, proto.Raft.Node.Builder, proto.Raft.NodeOrBuilder>(
+                  peer_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          peer_ = null;
+        }
+        return peerBuilder_;
+      }
+
+      private proto.HyperCube.RaftOptions raftOptions_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          proto.HyperCube.RaftOptions, proto.HyperCube.RaftOptions.Builder, proto.HyperCube.RaftOptionsOrBuilder> raftOptionsBuilder_;
+      /**
+       * <code>.proto.RaftOptions raft_options = 3;</code>
+       */
+      public boolean hasRaftOptions() {
+        return raftOptionsBuilder_ != null || raftOptions_ != null;
+      }
+      /**
+       * <code>.proto.RaftOptions raft_options = 3;</code>
+       */
+      public proto.HyperCube.RaftOptions getRaftOptions() {
+        if (raftOptionsBuilder_ == null) {
+          return raftOptions_ == null ? proto.HyperCube.RaftOptions.getDefaultInstance() : raftOptions_;
+        } else {
+          return raftOptionsBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.proto.RaftOptions raft_options = 3;</code>
+       */
+      public Builder setRaftOptions(proto.HyperCube.RaftOptions value) {
+        if (raftOptionsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          raftOptions_ = value;
+          onChanged();
+        } else {
+          raftOptionsBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.proto.RaftOptions raft_options = 3;</code>
+       */
+      public Builder setRaftOptions(
+          proto.HyperCube.RaftOptions.Builder builderForValue) {
+        if (raftOptionsBuilder_ == null) {
+          raftOptions_ = builderForValue.build();
+          onChanged();
+        } else {
+          raftOptionsBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.proto.RaftOptions raft_options = 3;</code>
+       */
+      public Builder mergeRaftOptions(proto.HyperCube.RaftOptions value) {
+        if (raftOptionsBuilder_ == null) {
+          if (raftOptions_ != null) {
+            raftOptions_ =
+              proto.HyperCube.RaftOptions.newBuilder(raftOptions_).mergeFrom(value).buildPartial();
+          } else {
+            raftOptions_ = value;
+          }
+          onChanged();
+        } else {
+          raftOptionsBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.proto.RaftOptions raft_options = 3;</code>
+       */
+      public Builder clearRaftOptions() {
+        if (raftOptionsBuilder_ == null) {
+          raftOptions_ = null;
+          onChanged();
+        } else {
+          raftOptions_ = null;
+          raftOptionsBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.proto.RaftOptions raft_options = 3;</code>
+       */
+      public proto.HyperCube.RaftOptions.Builder getRaftOptionsBuilder() {
+        
+        onChanged();
+        return getRaftOptionsFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.proto.RaftOptions raft_options = 3;</code>
+       */
+      public proto.HyperCube.RaftOptionsOrBuilder getRaftOptionsOrBuilder() {
+        if (raftOptionsBuilder_ != null) {
+          return raftOptionsBuilder_.getMessageOrBuilder();
+        } else {
+          return raftOptions_ == null ?
+              proto.HyperCube.RaftOptions.getDefaultInstance() : raftOptions_;
+        }
+      }
+      /**
+       * <code>.proto.RaftOptions raft_options = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          proto.HyperCube.RaftOptions, proto.HyperCube.RaftOptions.Builder, proto.HyperCube.RaftOptionsOrBuilder> 
+          getRaftOptionsFieldBuilder() {
+        if (raftOptionsBuilder_ == null) {
+          raftOptionsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              proto.HyperCube.RaftOptions, proto.HyperCube.RaftOptions.Builder, proto.HyperCube.RaftOptionsOrBuilder>(
+                  getRaftOptions(),
+                  getParentForChildren(),
+                  isClean());
+          raftOptions_ = null;
+        }
+        return raftOptionsBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:proto.Config)
+    }
+
+    // @@protoc_insertion_point(class_scope:proto.Config)
+    private static final proto.HyperCube.Config DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new proto.HyperCube.Config();
+    }
+
+    public static proto.HyperCube.Config getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Config>
+        PARSER = new com.google.protobuf.AbstractParser<Config>() {
+      @java.lang.Override
+      public Config parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Config(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Config> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Config> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public proto.HyperCube.Config getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface RaftOptionsOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:proto.RaftOptions)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>uint64 max_cube_file_size = 1;</code>
+     */
+    long getMaxCubeFileSize();
+
+    /**
+     * <code>string cube_dir = 2;</code>
+     */
+    java.lang.String getCubeDir();
+    /**
+     * <code>string cube_dir = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getCubeDirBytes();
+  }
+  /**
+   * Protobuf type {@code proto.RaftOptions}
+   */
+  public  static final class RaftOptions extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:proto.RaftOptions)
+      RaftOptionsOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use RaftOptions.newBuilder() to construct.
+    private RaftOptions(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private RaftOptions() {
+      cubeDir_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new RaftOptions();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private RaftOptions(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              maxCubeFileSize_ = input.readUInt64();
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              cubeDir_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return proto.HyperCube.internal_static_proto_RaftOptions_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return proto.HyperCube.internal_static_proto_RaftOptions_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              proto.HyperCube.RaftOptions.class, proto.HyperCube.RaftOptions.Builder.class);
+    }
+
+    public static final int MAX_CUBE_FILE_SIZE_FIELD_NUMBER = 1;
+    private long maxCubeFileSize_;
+    /**
+     * <code>uint64 max_cube_file_size = 1;</code>
+     */
+    public long getMaxCubeFileSize() {
+      return maxCubeFileSize_;
+    }
+
+    public static final int CUBE_DIR_FIELD_NUMBER = 2;
+    private volatile java.lang.Object cubeDir_;
+    /**
+     * <code>string cube_dir = 2;</code>
+     */
+    public java.lang.String getCubeDir() {
+      java.lang.Object ref = cubeDir_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        cubeDir_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string cube_dir = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getCubeDirBytes() {
+      java.lang.Object ref = cubeDir_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        cubeDir_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (maxCubeFileSize_ != 0L) {
+        output.writeUInt64(1, maxCubeFileSize_);
+      }
+      if (!getCubeDirBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, cubeDir_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (maxCubeFileSize_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(1, maxCubeFileSize_);
+      }
+      if (!getCubeDirBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, cubeDir_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof proto.HyperCube.RaftOptions)) {
+        return super.equals(obj);
+      }
+      proto.HyperCube.RaftOptions other = (proto.HyperCube.RaftOptions) obj;
+
+      if (getMaxCubeFileSize()
+          != other.getMaxCubeFileSize()) return false;
+      if (!getCubeDir()
+          .equals(other.getCubeDir())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + MAX_CUBE_FILE_SIZE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getMaxCubeFileSize());
+      hash = (37 * hash) + CUBE_DIR_FIELD_NUMBER;
+      hash = (53 * hash) + getCubeDir().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static proto.HyperCube.RaftOptions parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto.HyperCube.RaftOptions parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto.HyperCube.RaftOptions parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto.HyperCube.RaftOptions parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto.HyperCube.RaftOptions parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto.HyperCube.RaftOptions parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto.HyperCube.RaftOptions parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto.HyperCube.RaftOptions parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static proto.HyperCube.RaftOptions parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static proto.HyperCube.RaftOptions parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static proto.HyperCube.RaftOptions parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto.HyperCube.RaftOptions parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(proto.HyperCube.RaftOptions prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code proto.RaftOptions}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:proto.RaftOptions)
+        proto.HyperCube.RaftOptionsOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return proto.HyperCube.internal_static_proto_RaftOptions_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return proto.HyperCube.internal_static_proto_RaftOptions_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                proto.HyperCube.RaftOptions.class, proto.HyperCube.RaftOptions.Builder.class);
+      }
+
+      // Construct using proto.HyperCube.RaftOptions.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        maxCubeFileSize_ = 0L;
+
+        cubeDir_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return proto.HyperCube.internal_static_proto_RaftOptions_descriptor;
+      }
+
+      @java.lang.Override
+      public proto.HyperCube.RaftOptions getDefaultInstanceForType() {
+        return proto.HyperCube.RaftOptions.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public proto.HyperCube.RaftOptions build() {
+        proto.HyperCube.RaftOptions result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public proto.HyperCube.RaftOptions buildPartial() {
+        proto.HyperCube.RaftOptions result = new proto.HyperCube.RaftOptions(this);
+        result.maxCubeFileSize_ = maxCubeFileSize_;
+        result.cubeDir_ = cubeDir_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof proto.HyperCube.RaftOptions) {
+          return mergeFrom((proto.HyperCube.RaftOptions)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(proto.HyperCube.RaftOptions other) {
+        if (other == proto.HyperCube.RaftOptions.getDefaultInstance()) return this;
+        if (other.getMaxCubeFileSize() != 0L) {
+          setMaxCubeFileSize(other.getMaxCubeFileSize());
+        }
+        if (!other.getCubeDir().isEmpty()) {
+          cubeDir_ = other.cubeDir_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        proto.HyperCube.RaftOptions parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (proto.HyperCube.RaftOptions) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private long maxCubeFileSize_ ;
+      /**
+       * <code>uint64 max_cube_file_size = 1;</code>
+       */
+      public long getMaxCubeFileSize() {
+        return maxCubeFileSize_;
+      }
+      /**
+       * <code>uint64 max_cube_file_size = 1;</code>
+       */
+      public Builder setMaxCubeFileSize(long value) {
+        
+        maxCubeFileSize_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint64 max_cube_file_size = 1;</code>
+       */
+      public Builder clearMaxCubeFileSize() {
+        
+        maxCubeFileSize_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object cubeDir_ = "";
+      /**
+       * <code>string cube_dir = 2;</code>
+       */
+      public java.lang.String getCubeDir() {
+        java.lang.Object ref = cubeDir_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          cubeDir_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string cube_dir = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getCubeDirBytes() {
+        java.lang.Object ref = cubeDir_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          cubeDir_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string cube_dir = 2;</code>
+       */
+      public Builder setCubeDir(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        cubeDir_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string cube_dir = 2;</code>
+       */
+      public Builder clearCubeDir() {
+        
+        cubeDir_ = getDefaultInstance().getCubeDir();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string cube_dir = 2;</code>
+       */
+      public Builder setCubeDirBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        cubeDir_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:proto.RaftOptions)
+    }
+
+    // @@protoc_insertion_point(class_scope:proto.RaftOptions)
+    private static final proto.HyperCube.RaftOptions DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new proto.HyperCube.RaftOptions();
+    }
+
+    public static proto.HyperCube.RaftOptions getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<RaftOptions>
+        PARSER = new com.google.protobuf.AbstractParser<RaftOptions>() {
+      @java.lang.Override
+      public RaftOptions parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RaftOptions(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<RaftOptions> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RaftOptions> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public proto.HyperCube.RaftOptions getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_proto_HyperResponse_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_proto_HyperResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_proto_Config_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_proto_Config_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_proto_RaftOptions_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_proto_RaftOptions_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -1401,28 +2538,42 @@ public final class HyperCube {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\025proto/hyperCube.proto\022\005proto\"\031\n\nResMes" +
-      "sage\022\013\n\003msg\030\001 \001(\t\"P\n\rHyperResponse\022\037\n\007re" +
-      "sCode\030\001 \001(\0162\016.proto.ResCode\022\036\n\003msg\030\002 \001(\013" +
-      "2\021.proto.ResMessage*-\n\007ResCode\022\013\n\007SUCCES" +
-      "S\020\000\022\010\n\004FAIL\020\001\022\013\n\007WARNING\020\002b\006proto3"
+      "\n\025proto/hyperCube.proto\022\005proto\032\020proto/ra" +
+      "ft.proto\032\020proto/util.proto\"P\n\rHyperRespo" +
+      "nse\022\037\n\007resCode\030\001 \001(\0162\016.proto.ResCode\022\036\n\003" +
+      "msg\030\002 \001(\0132\021.proto.ResMessage\"h\n\006Config\022\031" +
+      "\n\004node\030\001 \001(\0132\013.proto.Node\022\031\n\004peer\030\002 \003(\0132" +
+      "\013.proto.Node\022(\n\014raft_options\030\003 \001(\0132\022.pro" +
+      "to.RaftOptions\";\n\013RaftOptions\022\032\n\022max_cub" +
+      "e_file_size\030\001 \001(\004\022\020\n\010cube_dir\030\002 \001(\tb\006pro" +
+      "to3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
+          proto.Raft.getDescriptor(),
+          proto.Util.getDescriptor(),
         });
-    internal_static_proto_ResMessage_descriptor =
-      getDescriptor().getMessageTypes().get(0);
-    internal_static_proto_ResMessage_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_proto_ResMessage_descriptor,
-        new java.lang.String[] { "Msg", });
     internal_static_proto_HyperResponse_descriptor =
-      getDescriptor().getMessageTypes().get(1);
+      getDescriptor().getMessageTypes().get(0);
     internal_static_proto_HyperResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_HyperResponse_descriptor,
         new java.lang.String[] { "ResCode", "Msg", });
+    internal_static_proto_Config_descriptor =
+      getDescriptor().getMessageTypes().get(1);
+    internal_static_proto_Config_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_proto_Config_descriptor,
+        new java.lang.String[] { "Node", "Peer", "RaftOptions", });
+    internal_static_proto_RaftOptions_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_proto_RaftOptions_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_proto_RaftOptions_descriptor,
+        new java.lang.String[] { "MaxCubeFileSize", "CubeDir", });
+    proto.Raft.getDescriptor();
+    proto.Util.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

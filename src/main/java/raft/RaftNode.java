@@ -1,12 +1,11 @@
 package raft;
 
-import com.sun.deploy.nativesandbox.NativeSandboxBroker;
 import io.grpc.*;
+import proto.HyperCube;
 import proto.Raft;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -14,7 +13,7 @@ import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.locks.Lock;
 import java.util.stream.IntStream;
 
-import static util.universalUtil.buildSender;
+import static util.HyperUtil.buildSender;
 
 public class RaftNode {
 
@@ -33,7 +32,7 @@ public class RaftNode {
     private String serverIp;
     private String leaderId;
     private NodeState state;
-    private Raft.HyperCubeConfig config;
+    private HyperCube.Config config;
     private ExecutorService execService;
     private CompletionService<Raft.VoteResponse> voteResponseCompletionService;
     private ScheduledExecutorService electionScheduledExcutorService;
@@ -44,6 +43,7 @@ public class RaftNode {
     private AtomicLong latestTerm;
     private AtomicLong latestVoteTerm;
     private AtomicInteger grantedVote;
+    private CubeStore _cubeStore;
     private int peerCount;
     private Lock lock;
     private final Object syncObj = new Object();
@@ -72,6 +72,8 @@ public class RaftNode {
 
         }, 1000, 1000, TimeUnit.MILLISECONDS);
 
+        _cubeStore = new CubeStore();
+
     }
 
     private int
@@ -79,6 +81,13 @@ public class RaftNode {
         return (new Random().nextInt(150) + 150);
     }
 
+    public void append(List<Raft.LogEntry> entries){
+        _cubeStore.append(entries);
+
+
+
+
+    }
     public void init() {
 
 
@@ -267,9 +276,6 @@ public class RaftNode {
 
 
 
-
-
-
         }else{
 
 
@@ -296,7 +302,7 @@ public class RaftNode {
         this.peerList = list;
     }
 
-    public void setHyperCubeConfig(Raft.HyperCubeConfig conf) {
+    public void setHyperCubeConfig(HyperCube.Config conf) {
 
         System.out.println("------------------------------------------\r\n" +
                 "HYPER CUBE CONFIG REGISTERED\r\n" +
