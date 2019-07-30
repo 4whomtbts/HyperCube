@@ -1,0 +1,26 @@
+{
+  "node": {
+    "server_id": "east_europe_region",
+    "server_ip": "127.0.0.1",
+    "port": 1998
+  },
+  "peer": [
+    {
+      "server_id": "seoul_region",
+      "server_ip": "127.0.0.1",
+      "port": 1999
+    },
+    {
+      "server_id": "us_east_region",
+      "server_ip": "127.0.0.1",
+      "port": 1997
+    }
+  ],
+
+
+  "raft_options" : {
+    "max_cube_file_size": 1073741824,
+    "cube_dir": "cube3"
+  }
+
+}

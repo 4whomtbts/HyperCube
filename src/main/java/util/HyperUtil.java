@@ -12,6 +12,7 @@ import java.io.*;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -19,9 +20,13 @@ import java.util.zip.CRC32;
 
 public class HyperUtil {
 
-
+/*
     public static String getHyperCubeParentDir(){
         return System.getProperty("user.home");
+    }
+    */
+    public static String getHyperCubeParentDir(){
+        return Paths.get("").toAbsolutePath().toString();
     }
 
     public String getLogFullPath(){

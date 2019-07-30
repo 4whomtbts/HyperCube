@@ -3,6 +3,8 @@ package raft;
 import io.grpc.*;
 import proto.HyperCube;
 import proto.Raft;
+import util.Config;
+import util.HyperUtil;
 
 import java.io.IOException;
 import java.util.List;
@@ -24,10 +26,9 @@ public class RaftNode {
     }
 
     //private final int host;
-    private final String serverId;
-    private final int port;
-    private final Server server;
-    private List<Peer> peerList;
+    private String _serverId;
+    private int _port;
+    private Server server;
     private ConcurrentMap<String, Peer> peerMap;
     private String serverIp;
     private String leaderId;
@@ -51,43 +52,43 @@ public class RaftNode {
     private int awaitingVoteResponseTime = 10000; //TODO should be defined in conf file
     private Raft.Node mySender;
 
-    public RaftNode(String serverId, String serverIp, int port) {
-        this.port = port;
-        this.serverId = serverId;
-        System.out.println(port + " 번 서버실행");
-        this.server = ServerBuilder.forPort(port).addService(new RaftServiceImpl(this)).build();
-        this.state = NodeState.FOLLOWER;
-        this.leaderId = null;
-        this.peerMap = new ConcurrentHashMap<>();
-        this.serverIp = serverIp;
-        this.grantedVote = new AtomicInteger();
-        this.grantedVote.set(0);
-        this.latestTerm = new AtomicLong();
-        this.latestTerm.set(0);
-        this.latestVoteTerm = new AtomicLong();
-        this.latestVoteTerm.set(0);
-        this.mySender = buildSender(this.getServerId(), this.getPort());
-        scheduledExecutorService = Executors.newScheduledThreadPool(2);
-        scheduledExecutorService.scheduleWithFixedDelay(() -> {
+    public ScheduledFuture getHeartBeatLaunchFuture() {
+        return heartBeatLaunchFuture;
+    }
 
-        }, 1000, 1000, TimeUnit.MILLISECONDS);
+    public RaftNode()  {
+        try {
+            this.config = Config.parseConfig("HyperConfig1.json");
+            this._serverId = config.getNode().getServerId();
+            this._port = config.getNode().getPort();
+            this.server = ServerBuilder.forPort(_port).addService(new RaftServiceImpl(this)).build();
+            this.state = NodeState.FOLLOWER;
+            this.leaderId = null;
+            this.peerMap = new ConcurrentHashMap<>();
+            this.serverIp = serverIp;
+            this.grantedVote = new AtomicInteger();
+            this.grantedVote.set(0);
+            this.latestTerm = new AtomicLong();
+            this.latestTerm.set(0);
+            this.latestVoteTerm = new AtomicLong();
+            this.latestVoteTerm.set(0);
+            this.mySender = buildSender(this.getServerId(), this.getPort());
+            scheduledExecutorService = Executors.newScheduledThreadPool(2);
+            scheduledExecutorService.scheduleWithFixedDelay(() -> {
 
-        _cubeStore = new CubeStore();
+            }, 1000, 1000, TimeUnit.MILLISECONDS);
+
+            _cubeStore = new CubeStore();
+        }catch (Exception e){}
+
 
     }
 
-    private int
-    getRandomWaitingTime() {
+    private int getRandomWaitingTime() {
         return (new Random().nextInt(150) + 150);
     }
 
-    public void append(List<Raft.LogEntry> entries){
-        _cubeStore.append(entries);
 
-
-
-
-    }
     public void init() {
 
 
@@ -100,15 +101,29 @@ public class RaftNode {
         );
 
         voteResponseCompletionService = new ExecutorCompletionService<>(execService);
-        registerPeersByConf();
+
         resetElectionTimeOut();
+
+
+
+    }
+    public void append(List<Raft.LogEntry> entries){
+        _cubeStore.append(entries);
+
+
     }
 
     private void registerPeersByConf() {
 
+        this.peerMap = new ConcurrentHashMap<>();
+
         for (Raft.Node node : config.getPeerList()) {
 
-            RaftNode newPeer = new RaftNode(node.getServerId(), node.getServerIp(), node.getPort());
+            RaftNode newPeer = new RaftNode();
+            newPeer.setServerId(node.getServerId());
+            newPeer.setServerIp(node.getServerIp());
+            newPeer.setPort(node.getPort());
+
             this.peerMap.put(newPeer.getServerId(), new Peer(newPeer));
         }
     }
@@ -297,10 +312,6 @@ public class RaftNode {
     }
 
 
-    public void setPeerList(List<Peer> list) {
-
-        this.peerList = list;
-    }
 
     public void setHyperCubeConfig(HyperCube.Config conf) {
 
@@ -318,6 +329,7 @@ public class RaftNode {
         }
 
         this.config = conf;
+        registerPeersByConf();
     }
 
     public void becomeLeader() {
@@ -339,7 +351,7 @@ public class RaftNode {
 
 
     public int getPort() {
-        return this.port;
+        return this._port;
     }
 
     public long getTerm() {
@@ -364,7 +376,7 @@ public class RaftNode {
     }
 
     public String getServerId() {
-        return this.serverId;
+        return this._serverId;
     }
 
     public String getServerIp() {
@@ -404,6 +416,15 @@ public class RaftNode {
 
     public void demoteLeader(){
         this.leaderId  = null;
+    }
+    public void setPort(int port){
+        this._port = port;
+    }
+    public void setServerId(String serverId){
+        this._serverId = serverId;
+    }
+    public void setServerIp(String serverIp){
+        this.serverIp = serverIp;
     }
 
 }
